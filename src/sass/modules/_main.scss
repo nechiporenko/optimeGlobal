@@ -1,0 +1,192 @@
+@import "base";
+/*Main styles*/
+html,
+button,
+input,
+select,
+textarea {
+    color: $text-color;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Base Styles */
+html{
+    height:100%;
+    line-height: 1;
+}
+
+.page{//body style
+    min-height:100%;
+    font-family: $font-regular, "Helvetica CY", "Nimbus Sans L", sans-serif;
+}
+
+.page__content{
+    font-size:rem($project-font-size);
+    line-height:strip-units($project-line-height/$project-font-size);
+
+    a{
+        text-decoration:none;
+        &:hover{
+            text-decoration:underline;
+        }
+    }
+}
+
+/* Typography*/
+h1, h2, h3, h4, h5, h6, .g-title1, .g-title2, g-title3{
+  margin-top: 0;
+  color:$title-color;
+  font-family:$font-title;
+  font-weight:bold;
+}
+.g-title1{
+    display:block;
+    margin-bottom: 35px;
+    font-size:rem(30px);
+    line-height:1.2;
+    text-transform:uppercase;
+}
+
+.g-title2{
+    display:block;
+    margin-bottom:35px;
+    font-size:rem(18px);
+    line-height:1.33;
+    text-transform:uppercase;
+}
+
+.g-title2--alt{
+    font-weight:normal;
+    color:$primary;
+}
+
+.g-title3{
+    display:block;
+    margin-bottom:$project-line-height;
+    font-size:rem(16px);
+    line-height:1.25;
+}
+
+/* Links */
+a {
+  color: $primary;
+}
+
+
+/* Lists */
+ul {
+    list-style: disc outside; }
+ol {
+    list-style: decimal outside; }
+ol, ul {
+    margin-top: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: $project-line-height/2 0 $project-line-height/2 30px;
+}
+
+.g-clearlist{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+/* Blockquote */
+blockquote{
+    font-size:120%;
+    line-height:1.6;
+    font-style: italic;
+    padding: 0 0 0 30px;
+    border-left:2px solid $primary;
+}
+cite{
+    display:block;
+    font-size:75%;
+}
+
+/* Code */
+code {
+    padding:2px 5px;
+    margin:0 2px;
+    font-size: 90%;
+    white-space: nowrap;
+    background: #F1F1F1;
+    border: 1px solid $border-color;
+    border-radius:$border-radius;
+}
+pre > code {
+  display: block;
+  padding:10px 15px;
+  white-space: pre;
+}
+
+
+/* Spacing */
+p {
+  margin-top: 0; }
+
+
+pre,
+blockquote,
+dl,
+figure,
+fieldset,
+table,
+p,
+ul,
+ol{
+    margin-bottom: $project-line-height/2;
+}
+
+/* Misc */
+hr {
+    margin: $project-line-height 0;
+    border-width: 0;
+    border-top: 1px solid $border-color;
+}
+
+/* Transitions */
+.g-transition{
+    transition-duration:.2s;
+    transition-timing-function:ease-in;
+}
+a, button, input[type="button"], input[type="submit"],
+#{$all-text-inputs}, select{
+    transition-property:border-color,color,background-color, box-shadow, transform;
+    @extend .g-transition;
+}

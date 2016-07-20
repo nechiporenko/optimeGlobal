@@ -1,0 +1,55 @@
+﻿@import "../../modules/_base.scss";
+/*Icon Block*/
+.b-icon{
+    margin:30px 0;
+    line-height:1;
+    text-align:center;
+
+    @include media($tablet){
+        margin-bottom:0;
+    }
+}
+.b-icon__thumb{
+    width:200px;
+    height:110px;
+    margin:0 auto $project-line-height;
+    position:relative;
+}
+
+.b-icon__img{
+    @extend .g-img-centered;
+}
+
+.b-icon__entry{
+    font-size:rem(14px);
+    line-height:1.56;
+
+    p{
+        max-width:220px;
+        margin:0 auto $project-line-height;
+    }
+}
+
+.b-icon__title{
+    @extend .g-title2;
+    margin-bottom:18px;
+}
+
+//список для вывода
+.b-icon__list{
+    @extend .g-clearlist;
+    @extend .g-clearfix;
+}
+.b-icon__item{
+    @extend .g-column;
+
+    @include media($tablet){
+        @include span-columns(6);
+        @include omega(2n);
+    }
+
+    @include media($large){
+        @include omega-reset(2n);
+        @include span-columns(3);
+    }
+}

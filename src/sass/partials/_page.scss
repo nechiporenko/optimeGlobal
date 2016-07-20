@@ -1,0 +1,49 @@
+﻿@import "../modules/_base.scss";
+
+/*Page Sections*/
+.page__section{
+    padding:30px 0;
+    line-height:1.25;
+
+    @include media($desktop){
+        padding:35px 0;
+    }
+
+    @include media($large){
+        padding:45px 0;
+    }
+
+    @include media($extra-large){
+        padding:90px 0;
+    }
+}
+
+.page__section--alt{
+    background:$bg-alt;
+}
+
+.page__section--font1{
+    font-size:rem(14px);
+    line-height:1.56;
+}
+
+.page__section--font2{
+    font-size:rem(14px);
+    line-height:1.3;
+}
+
+@import "page/_hero-slider.scss";
+@import "page/_icon-block.scss";//блок с иконками на главной
+@import "page/_connect.scss";//блок Связаться с нами на главной
+@import "page/_scroll-up.scss";
+
+
+
+
+@import "page/_breadcrumbs.scss";
+
+@import "page/_slider.scss";
+
+
+
+

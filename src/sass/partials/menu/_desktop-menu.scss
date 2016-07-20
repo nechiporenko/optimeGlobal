@@ -1,0 +1,100 @@
+﻿@import "../../modules/_base.scss";
+/* Desktop Menu */
+.h-menu{
+    list-style-type:none;
+    margin:0;
+    padding:20px 0 0 0;
+    font-size:0;
+    float:right;
+    text-align:right;
+    display:none;
+
+    @include media($desktop){
+        display:block;
+    }
+}
+
+.h-menu__item{
+    display:inline-block;
+    margin-right:20px;
+    font-size:rem(14px);
+    position:relative;
+
+    & >a{
+        display:inline-block;
+        color:#fff;
+        text-decoration:none;
+        text-transform:uppercase;
+        position:relative;
+        line-height:1.1;
+
+        &:after{
+            content:'';
+            width:100%;
+            border-top:1px solid #fff;
+            position:absolute;
+            bottom:-4px; left:0;
+            opacity:0;
+            @extend .g-transition;
+            transition-property:opacity;
+            z-index:1001; //сквозь субменю
+        }
+
+        &:hover,
+        &.hover,
+        &.current{
+            &:after{
+                opacity:1;
+            }
+        }
+
+        &.current{
+            cursor:default;
+        }
+
+        &.current.has-menu{
+            cursor:pointer;
+        }
+    }
+
+    @include media($large){
+        margin-right:45px;
+    }
+}
+
+
+.h-submenu{
+    list-style-type:none;
+    padding:10px;
+    margin:0;
+    position:absolute;
+    top:100%;
+    left:-10px;
+    width:220px;
+    text-align:left;
+    background:$primary;
+    box-sizing:border-box;
+    box-shadow:-2px 2px 4px -2px rgba(#000, .25);
+    display:none;
+}
+
+.h-submenu__item{
+    display:block;
+
+    & >a {
+        display:block;
+        padding:8px 0;
+        color:#fff;
+        text-decoration:none;
+        line-height:1.2;
+
+        &:hover,
+        &.current{
+            text-decoration:underline;
+        }
+
+        &.current{
+            cursor:default;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+﻿@import "../../modules/_base.scss";
+/*Lang switcher*/
+.h-lang{
+    float:right;
+    position:relative;
+}
+
+.h-lang__btn{
+    @extend .g-clearbutton;
+    height:36px;
+    padding-right:16px;
+    text-align:left;
+    position:relative;
+
+    &:after{
+        content:'\e904';
+        position:absolute;
+        top:50%;
+        margin-top:-3px;
+        right:0;
+        font-family:'icomoon';
+        font-size:rem(8px);
+        color:#fff;
+        line-height:1;
+    }
+
+    @include media($desktop){
+        height:55px; //высота лого
+    }
+}
+
+.h-lang__img{
+    width:24px;
+    min-width:24px;
+    height:18px;
+}
+
+.h-lang__list{
+    @extend .g-clearlist;
+    position:absolute;
+    top:100%;
+    right:6px;
+    z-index:1000;
+    background:$primary;
+    box-shadow:-1px 1px 4px 0 rgba(#000, .3);
+    display:none;
+    line-height:1;
+
+    &.active{
+        display:block;
+    }
+}
+
+.h-lang__item{
+    display:block;
+    margin:10px 0;
+}
+
+.h-lang__link{
+    display:inline-block;
+    padding:0 10px;
+    color:#fff;
+    text-decoration:none;
+    text-transform:uppercase;
+    white-space:nowrap;
+}

@@ -1,0 +1,32 @@
+﻿@import "../../modules/_base.scss";
+/*Connect with us form*/
+.b-connect{
+    padding:30px 0;
+    background:$primary;
+    color:#fff;
+    line-height:1;
+    box-sizing:border-box;
+
+    @include media($tablet){
+        height:575px;
+        background:$primary url(../img/bg-contacts.png) center center no-repeat;
+    }
+
+    @include media($desktop){
+        padding-top:35px;
+    }
+
+    @include media($large){
+        padding-top:45px;
+    }
+
+    @include media($extra-large){
+        padding-top:80px;
+    }
+}
+
+.b-connect__title{
+    @extend .g-title1;
+    color:#fff;
+    text-align:center;
+}
