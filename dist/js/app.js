@@ -1,3 +1,10 @@
+/*!
+ * optimeGlobal
+ * @author: 'Digital Force', http://digitalforce.ua
+ * @version: 1.0.1
+ * Copyright 2016.
+ */
+
 /**
  * bxSlider v4.2.5
  * Copyright 2013-2015 Steven Wanderski

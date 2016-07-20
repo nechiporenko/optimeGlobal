@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ['src/sass/main.scss','src/sass/**/*.scss'],
-				tasks: ['sass:dist', 'autoprefixer:dist']
+				tasks: ['sass:dist', 'autoprefixer:dist', 'cssmin']
 			},
 			livereload: {
 				files: ['dist/*.html', 'src/js/*.js', 'dist/css/*.css','dist/img/**/*.{png,jpg,jpeg,gif,webp,svg}'],
@@ -34,8 +34,8 @@ module.exports = function(grunt) {
 		sass: {
 			options: {
 				sourceMap: false,
-				outputStyle: 'compressed'
-				//outputStyle: 'compact'
+				//outputStyle: 'compressed'
+				outputStyle: 'compact'
 			},
 			dist: {
 				files: {
@@ -55,9 +55,20 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: 'src/css/unprefixed.css',
-				dest: 'dist/css/app.css'
+				dest: 'src/css/prefixed.css'
 			},
+		},
+		cssmin: {
+		  options: {
+			shorthandCompacting: false,
+			roundingPrecision: -1
 		  },
+		  target: {
+			files: {
+				'dist/css/app.min.css' : 'src/css/prefixed.css'
+			}
+		  }
+		},
 		concat: {
 			dist: {
 				src: [
@@ -98,6 +109,29 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		tag: {
+		  banner: '/*!\n' +
+			' * <%= pkg.name %>\n' +
+			' * @author: <%= pkg.author %>\n' +
+			' * @version: <%= pkg.version %>\n' +
+			' * Copyright ' + new Date().getFullYear() +'.\n' +
+			' */\n'
+		},
+		usebanner: {
+		  taskName: {
+			options: {
+			  position: 'top',
+			  banner: '<%= tag.banner %>',
+			  linebreak: true
+			},
+			files: {
+			  src: ['dist/css/app.min.css',
+				'dist/js/app.min.js',
+				'dist/js/app.js'
+			  ]
+			}
+		  }
+		},
 		newer:{
 			options:{
 				tolerance: 1000
@@ -105,7 +139,9 @@ module.exports = function(grunt) {
 		},
 		concurrent: {
 			target1: ['newer:sass:dist', 'newer:concat'],
-			target2: [ 'newer:autoprefixer:dist', 'newer:uglify', 'newer:imagemin']
+			target2: [ 'newer:autoprefixer:dist', 'newer:uglify'],
+			target3: ['newer:cssmin', 'newer:imagemin'],
+			target4: ['newer:copy']
 		},
 		copy: {
 			main:{
@@ -147,6 +183,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-banner');
 	
-	grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2', 'watch']);
+	grunt.registerTask('default', ['concurrent:target1', 'concurrent:target2', 'concurrent:target3', 'concurrent:target4', 'watch']);
+	
+	//additional tasks:
+	//grunt copy
+	//grunt usebanner
+	//grunt imagemin
 };
