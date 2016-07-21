@@ -2,12 +2,13 @@
 // Десктоп меню (выпадайки)
 // Мобильное меню
 // Кнопка скролла страницы
-// Модальное окно
+// Откроем модальное окно по клику на data-modal
+// Стилизация Select
 // Hero Слайдер
+// Гугл карта - загрузим когда промотаем к секции
+// Если браузер не знает о плейсхолдерах в формах
 
 jQuery(document).ready(function ($) {
-    $('body').append('<div id="overlay" class="page__overlay"></div>');//оверлей - будем использовать при открытии модального окна и мобильного меню
-
     //
     // Переключатель языка
     //---------------------------------------------------------------------------------------
@@ -45,7 +46,6 @@ jQuery(document).ready(function ($) {
         });
     })();
 
-
     //
     // Десктоп меню (выпадайки)
     //---------------------------------------------------------------------------------------
@@ -65,7 +65,6 @@ jQuery(document).ready(function ($) {
         });
     })();
 
-
     //
     // Мобильное меню
     //---------------------------------------------------------------------------------------
@@ -73,32 +72,70 @@ jQuery(document).ready(function ($) {
         var $btn = $('.js-mmenu-toggle'),
             $menu = $('.js-mmenu'),
             $overlay = $('#overlay'),
-            $html = $('html'),
+            $body = $('body'),
             method = {};
 
         method.hideMenu = function () {
             $btn.removeClass('active');
             $menu.removeClass('active');
-            $html.css('overflow', 'auto');
-            $overlay.unbind('click', method.hideMenu).hide();
+            $body.css('overflow', 'auto');
+            method.hideAllSubmenu();
+
+            method.removeOverlay();
         };
 
         method.showMenu = function () {
             $btn.addClass('active');
             $menu.addClass('active');
-            $html.css('overflow', 'hidden');
-            $overlay.show().bind('click', method.hideMenu);
+            $body.css('overflow', 'hidden');
+            method.addOverlay();
+        };
+
+        method.showSubmenu = function (el) {
+            el.find('.m-menu__toggle').addClass('active');
+            el.find('.m-submenu').slideDown(400);
+        };
+
+        method.hideSubmenu = function (el) {
+            el.find('.m-menu__toggle').removeClass('active');
+            el.find('.m-submenu').slideUp(400);
+        };
+
+        method.hideAllSubmenu = function () {
+            $menu.find('.m-menu__toggle').removeClass('active');
+            $menu.find('.m-submenu').slideUp(400);
+        };
+
+        method.addOverlay = function () {
+            $body.append('<div id="overlay" class="page__overlay"></div>');
+            $('#overlay').bind('click', method.hideMenu);
+        };
+
+        method.removeOverlay = function () {
+            $('#overlay').unbind('click', method.hideMenu).remove();
         }
 
-        $('.b-header').on('click', '.js-mmenu-toggle', function () {//покажем - спрячем
+        $menu.find('.m-menu__item').has('ul').addClass('has-menu').append('<button type="button" class="m-menu__toggle"><i class="icomoon-down"></i></button>');
+
+        $('.b-header').on('click', '.js-mmenu-toggle', function () {//покажем - спрячем панель моб.меню
             if ($(this).hasClass('active')) {
                 method.hideMenu();
             } else {
                 method.showMenu();
-            }
+            };
         });
 
-        $menu.on('click', '.m-menu__label', method.hideMenu); //закроем по клику по заголовку
+        $menu.on('click', '.m-menu__label', method.hideMenu); //закроем панель по клику по заголовку
+
+        $menu.on('click', '.m-menu__toggle', function () {
+            var $el = $(this).parent('li');
+            if ($(this).hasClass('active')) {
+                method.hideSubmenu($el);
+            } else {
+                method.hideAllSubmenu();
+                method.showSubmenu($el);
+            };
+        });
     })();
 
     //
@@ -121,62 +158,25 @@ jQuery(document).ready(function ($) {
     })();
 
     //
-    // Модальное окно
+    // Откроем модальное окно по клику на data-modal
     //---------------------------------------------------------------------------------------
-    var showModal = (function (link) {
-        var
-        method = {},
-        $modal,
-        $window = $(window),
-        $overlay = $('#overlay'),
-        $close;
+    $('[data-modal]').on('click', function (e) {
+        e.preventDefault();
+        var target = $(this).data('modal');
+        if ($(target).length) {
+            $(target).arcticmodal();
+        }
+    });
 
-        $close = $('<button type="button" class="b-modal__close"><i class="icomoon-close"></i></button>'); //иконка закрыть
-
-
-        $close.on('click', function (e) {
-            e.preventDefault();
-            method.close();
+    //
+    // Стилизация Select
+    //---------------------------------------------------------------------------------------
+    $('.js-select').each(function () {
+        $(this).selectric({
+            disableOnMobile: false,
+            responsive: true
         });
-
-        // центрируем окно
-        method.center = function () {
-            var top, left;
-            top = Math.max($window.height() - $modal.outerHeight(), 0) / 2;
-            left = Math.max($window.width() - $modal.outerWidth(), 0) / 2;
-
-            $modal.css({
-                top: top + $window.scrollTop(),
-                left: left + $window.scrollLeft()
-            });
-        };
-
-        // открываем
-        method.open = function (link) {
-            $modal = $(link);
-            $modal.append($close);
-            method.center();
-            $window.bind('resize.modal', method.center);
-            $modal.show();
-            $overlay.show().bind('click', method.close);
-        };
-
-        // закрываем
-        method.close = function () {
-            $modal.hide();
-            $overlay.hide().unbind('click', method.close);
-            $window.unbind('resize.modal');
-        };
-
-        // клик по кнопке с атрибутом data-modal - открываем модальное окно
-        $('[data-modal]').on('click', function (e) {//передаем айди модального окна
-            e.preventDefault();
-            var link = $(this).data('modal');
-            if (link) { showModal.open(link); }
-        });
-
-        return method;
-    }());
+    });
 
     //
     // Hero Слайдер
@@ -237,5 +237,82 @@ jQuery(document).ready(function ($) {
     };
     if ($('.js-hero').length) {
         initHeroSlider();
+    };
+
+    //
+    // Гугл карта - загрузим когда промотаем к секции
+    //---------------------------------------------------------------------------------------
+    function startGoogleMap() {
+        var map = $('#map');
+        if ($.inViewport(map)) {//если блок с картой сразу на экране
+            initGoogleMap();//запускаем ее скрипт
+        } else {//если нет
+            $(window).bind('scroll', checkInView); //отслеживаем скролл
+        }
+
+        function checkInView() {//когда промотали к секции с картой
+            if ($.inViewport(map)) {
+                $(window).unbind('scroll', checkInView);//отключили отслеживание скролла
+                initGoogleMap();//запустили скрипты
+            }
+        };
     }
+
+    function initGoogleMap() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
+            'callback=gmap_draw';
+
+        window.gmap_draw = function () {
+            var map_lating = new google.maps.LatLng(50.463413, 30.508862),
+                map_options = {
+                    zoom: 17,
+                    center: map_lating,
+                    panControl: false,
+                    zoomControl: true,
+                    scrollwheel: false,
+                    streetViewControl: false,
+                    scaleControl: true,
+                    mapTypeId: google.maps.MapTypeId.ROAD
+                },
+                map = new google.maps.Map(document.getElementById('map'), map_options),
+                marker = new google.maps.Marker({
+                    position: map_lating,
+                    icon: "img/marker.svg",
+                    map: map
+                }),
+                info = new google.maps.InfoWindow({
+                    content: '<span class="g-title3">OptimeGlobal</div>'
+                });
+
+            google.maps.event.addListener(marker, 'mouseover', function () {
+                info.open(map, marker);
+            });
+
+            google.maps.event.addListener(marker, 'mouseout', function () {
+                info.close(map, marker);
+            });
+
+            google.maps.event.addDomListener(window, 'resize', function () {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter(center);
+            });
+        };
+
+        document.body.appendChild(script);
+    };
+
+    if ($('#map').length) {
+        startGoogleMap();
+    }
+
+    //
+    // Если браузер не знает о плейсхолдерах в формах
+    //---------------------------------------------------------------------------------------
+    if ($('html').hasClass('no-placeholder')) {
+        /* Placeholders.js v4.0.1 */
+        !function (a) { "use strict"; function b() { } function c() { try { return document.activeElement } catch (a) { } } function d(a, b) { for (var c = 0, d = a.length; d > c; c++) if (a[c] === b) return !0; return !1 } function e(a, b, c) { return a.addEventListener ? a.addEventListener(b, c, !1) : a.attachEvent ? a.attachEvent("on" + b, c) : void 0 } function f(a, b) { var c; a.createTextRange ? (c = a.createTextRange(), c.move("character", b), c.select()) : a.selectionStart && (a.focus(), a.setSelectionRange(b, b)) } function g(a, b) { try { return a.type = b, !0 } catch (c) { return !1 } } function h(a, b) { if (a && a.getAttribute(B)) b(a); else for (var c, d = a ? a.getElementsByTagName("input") : N, e = a ? a.getElementsByTagName("textarea") : O, f = d ? d.length : 0, g = e ? e.length : 0, h = f + g, i = 0; h > i; i++) c = f > i ? d[i] : e[i - f], b(c) } function i(a) { h(a, k) } function j(a) { h(a, l) } function k(a, b) { var c = !!b && a.value !== b, d = a.value === a.getAttribute(B); if ((c || d) && "true" === a.getAttribute(C)) { a.removeAttribute(C), a.value = a.value.replace(a.getAttribute(B), ""), a.className = a.className.replace(A, ""); var e = a.getAttribute(I); parseInt(e, 10) >= 0 && (a.setAttribute("maxLength", e), a.removeAttribute(I)); var f = a.getAttribute(D); return f && (a.type = f), !0 } return !1 } function l(a) { var b = a.getAttribute(B); if ("" === a.value && b) { a.setAttribute(C, "true"), a.value = b, a.className += " " + z; var c = a.getAttribute(I); c || (a.setAttribute(I, a.maxLength), a.removeAttribute("maxLength")); var d = a.getAttribute(D); return d ? a.type = "text" : "password" === a.type && g(a, "text") && a.setAttribute(D, "password"), !0 } return !1 } function m(a) { return function () { P && a.value === a.getAttribute(B) && "true" === a.getAttribute(C) ? f(a, 0) : k(a) } } function n(a) { return function () { l(a) } } function o(a) { return function () { i(a) } } function p(a) { return function (b) { return v = a.value, "true" === a.getAttribute(C) && v === a.getAttribute(B) && d(x, b.keyCode) ? (b.preventDefault && b.preventDefault(), !1) : void 0 } } function q(a) { return function () { k(a, v), "" === a.value && (a.blur(), f(a, 0)) } } function r(a) { return function () { a === c() && a.value === a.getAttribute(B) && "true" === a.getAttribute(C) && f(a, 0) } } function s(a) { var b = a.form; b && "string" == typeof b && (b = document.getElementById(b), b.getAttribute(E) || (e(b, "submit", o(b)), b.setAttribute(E, "true"))), e(a, "focus", m(a)), e(a, "blur", n(a)), P && (e(a, "keydown", p(a)), e(a, "keyup", q(a)), e(a, "click", r(a))), a.setAttribute(F, "true"), a.setAttribute(B, T), (P || a !== c()) && l(a) } var t = document.createElement("input"), u = void 0 !== t.placeholder; if (a.Placeholders = { nativeSupport: u, disable: u ? b : i, enable: u ? b : j }, !u) { var v, w = ["text", "search", "url", "tel", "email", "password", "number", "textarea"], x = [27, 33, 34, 35, 36, 37, 38, 39, 40, 8, 46], y = "#ccc", z = "placeholdersjs", A = new RegExp("(?:^|\\s)" + z + "(?!\\S)"), B = "data-placeholder-value", C = "data-placeholder-active", D = "data-placeholder-type", E = "data-placeholder-submit", F = "data-placeholder-bound", G = "data-placeholder-focus", H = "data-placeholder-live", I = "data-placeholder-maxlength", J = 100, K = document.getElementsByTagName("head")[0], L = document.documentElement, M = a.Placeholders, N = document.getElementsByTagName("input"), O = document.getElementsByTagName("textarea"), P = "false" === L.getAttribute(G), Q = "false" !== L.getAttribute(H), R = document.createElement("style"); R.type = "text/css"; var S = document.createTextNode("." + z + " {color:" + y + ";}"); R.styleSheet ? R.styleSheet.cssText = S.nodeValue : R.appendChild(S), K.insertBefore(R, K.firstChild); for (var T, U, V = 0, W = N.length + O.length; W > V; V++) U = V < N.length ? N[V] : O[V - N.length], T = U.attributes.placeholder, T && (T = T.nodeValue, T && d(w, U.type) && s(U)); var X = setInterval(function () { for (var a = 0, b = N.length + O.length; b > a; a++) U = a < N.length ? N[a] : O[a - N.length], T = U.attributes.placeholder, T ? (T = T.nodeValue, T && d(w, U.type) && (U.getAttribute(F) || s(U), (T !== U.getAttribute(B) || "password" === U.type && !U.getAttribute(D)) && ("password" === U.type && !U.getAttribute(D) && g(U, "text") && U.setAttribute(D, "password"), U.value === U.getAttribute(B) && (U.value = T), U.setAttribute(B, T)))) : U.getAttribute(C) && (k(U), U.removeAttribute(B)); Q || clearInterval(X) }, J); e(a, "beforeunload", function () { M.disable() }) } }(this);
+    };
 });

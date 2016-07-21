@@ -21,9 +21,8 @@
 @import "partials/sidebar";
 @import "partials/footer";
 
-//other parts
-@import "modules/modal";
-@import "modules/print";
-
 //plugins vendors
 @import "vendor/vendor";
+
+//print styles
+@import "modules/print";

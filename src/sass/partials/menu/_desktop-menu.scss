@@ -20,7 +20,7 @@
     font-size:rem(14px);
     position:relative;
 
-    & >a{
+    & > a{
         display:inline-block;
         color:#fff;
         text-decoration:none;
@@ -41,26 +41,34 @@
         }
 
         &:hover,
-        &.hover,
-        &.current{
+        &.hover{
             &:after{
                 opacity:1;
             }
         }
 
-        &.current{
-            cursor:default;
-        }
-
-        &.current.has-menu{
-            cursor:pointer;
-        }
     }
 
     @include media($large){
         margin-right:45px;
     }
 }
+
+.h-menu__item.current,
+.h-menu__item.current-menu-item{
+    & > a{
+        cursor:default;
+
+        &:after{
+            opacity:1;
+        }
+
+        &.has-menu{
+            cursor:pointer;
+        }
+    }
+}
+
 
 
 .h-submenu{

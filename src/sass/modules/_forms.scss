@@ -13,25 +13,27 @@ textarea {
     @include appearance(none);
 }
 
+$error-color:#e74c3c;
+
 .g-input,
 .g-select,
 .g-textarea{
     display:inline-block;
     vertical-align:middle;
     width:100%;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
     padding:0;
     background:none;
     border:none;
     border-bottom: 1px solid $border-color;
     border-radius:0;
-    color:$text-color;
+    color:$text-color-alt;
     font-size:rem(18px);
     box-shadow: none;
     box-sizing: border-box;
 
     @include placeholder{
-        color:$border-color;
+        color:$text-color-alt;
         text-overflow:ellipsis;
     }
 
@@ -48,11 +50,13 @@ textarea {
         color:$border-color;
     }
 
-    &.error{
-        border-color:red;
+    &.error,
+    .error > &{
+        border-color:$error-color !important;
+        color:$error-color !important;
 
         @include placeholder{
-            color:red;
+            color:$error-color !important;
         }
     }
 }
@@ -63,8 +67,8 @@ textarea {
 }
 
 .g-textarea{
-    min-height:100px;
-    padding:10px;
+    min-height:90px;
+    padding:5px 0;
     resize:none;
 }
 
@@ -72,8 +76,9 @@ textarea {
     display: block;
     margin-bottom:5px;
 
-    &.error{
-        color:red;
+    &.error,
+    .error > &{
+        color:$error-color;
     }
 }
 .g-label__body{
@@ -91,10 +96,16 @@ input[type="radio"] {
     position:relative;
 }
 .g-fieldset__msg{
-    font-size:rem(12px);
-    color:red;
+    font-size:rem(11px);
+    color:$error-color;
     position:absolute;
-    left:0; bottom:5px;
+    left:0; bottom:0;
+    font-style:italic;
+    display:none;
+
+    .error > &{
+        display:block;
+    }
 }
 
 

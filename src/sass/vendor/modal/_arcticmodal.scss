@@ -1,0 +1,69 @@
+﻿@import "../../modules/_base.scss";
+/*Modal Windows*/
+.arcticmodal-overlay,
+.arcticmodal-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 3000; }
+.arcticmodal-container { overflow: auto; margin: 0; padding: 0; border: 0; border-collapse: collapse; }
+.arcticmodal-container_i { height: 100%; margin: 0 auto; }
+.arcticmodal-container_i2 { padding: 10px; margin: 0; border: 0; vertical-align: middle; }
+.arcticmodal-error { padding: 20px; border-radius: 10px; background: #000; color: #fff; }
+.arcticmodal-loading { width: 80px; height: 80px; border-radius: 10px; background: #000 url(../img/loading.gif) no-repeat 50% 50%; }
+
+.box-modal {
+	position: relative;
+    width:280px;
+	padding: 15px;
+	background: #fff;
+	border-radius: 10px;
+    box-sizing:border-box;
+    line-height:1.25;
+
+    .g-title1{
+        font-size:rem(24px);
+    }
+
+    @include media($mobile){
+        width:450px;
+    }
+
+    @include media($small){
+        width:600px;
+        padding:20px;
+
+        .g-title1{
+            font-size:rem(30px);
+        }
+    }
+
+    @include media($tablet){
+        width:700px;
+        padding:30px 40px;
+
+        .g-col--one-half{
+            &:first-child{
+                padding-right:10px;
+            }
+            &:last-child{
+                padding-left:10px;
+            }
+        }
+    }
+}
+.box-modal_close {
+    @extend .g-clearbutton;
+    position: absolute; right: 10px; top: 6px; color: $border-color;
+
+    &:hover,
+    &:active,
+    &:focus{
+        color:$primary;
+    }
+
+    @include media($tablet){
+        right:15px; top:15px;
+    }
+}
+
+.box-modal__inner{
+    max-width:300px;
+    margin:0 auto;
+}

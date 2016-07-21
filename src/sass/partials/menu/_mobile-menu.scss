@@ -1,5 +1,17 @@
 ﻿@import "../../modules/_base.scss";
 /*Mobile Menu*/
+.page__overlay{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    z-index:3000;
+}
+
 .page__panel{
     position:fixed;
     width:256px;
@@ -23,42 +35,61 @@
 }
 
 
-.m-menu{
+.m-menu,
+.m-submenu{
     @extend .g-clearlist;
 }
 
 .m-menu__item{
-    font-size:rem(16px);
     position:relative;
 
-    &.current{
-        & > .m-menu__link{
+    &.current,
+    &.current-menu-item{
+        & > a{
             color:$primary;
+        }
+    }
+
+    &.has-menu{
+        & > a{
+            padding-right:40px;
         }
     }
 }
 
-
-.m-menu__link{
+.m-menu__item > a,
+.m-submenu__item > a{
     display:block;
-    padding:13px 12px;
+    padding:9px 12px;
     border-top:1px solid #808080;
     border-bottom:1px solid #000;
     color:#fff;
-    line-height:1.2;
-    text-decoration:none;
+    line-height:1.15;
+    font-size:rem(14px);
+    text-decoration:none !important;
+}
 
-    &:hover,
-    &:active{
+.m-menu__item > a{
+    text-transform:uppercase;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.m-submenu__item > a{
+    padding-left:20px;
+}
+
+.m-submenu__item.current{
+    & > a{
         color:$primary;
     }
 }
 
-
 .m-menu__label{
     display:block;
-    height:44px;
-    line-height:44px;
+    height:56px;
+    line-height:56px;
     padding:0 30px 0 12px;
     border-bottom:1px solid #000;
     font-size:rem(18px);
@@ -70,15 +101,37 @@
     outline:0;
 
     &:after{
-        content:'\e802';
-        font-family:'fontello';
+        content:'\e903';
+        font-family:'icomoon';
         position:absolute;
         right:12px;
     }
 }
 
-.m-menu__divider{
-    display:block;
-    border-top:1px solid #808080;
-    border-bottom:1px solid #000;
+
+.m-submenu{
+    display:none;
+}
+
+.m-menu__toggle{//кнопка показать - скрыть субменю
+    @extend .g-clearbutton;
+    @include size(36px);
+    line-height:36px;
+    position:absolute;
+    top:0; right:0;
+    font-size:rem(12px);
+    color:$border-color;
+    border-left:1px dotted #808080;
+
+    [class^="icomoon-"], [class*=" icomoon-"]{
+        display:inline-block;
+        vertical-align:middle;
+        @include transition(.4s transform);
+    }
+
+    &.active{
+        [class^="icomoon-"], [class*=" icomoon-"]{
+            @include transform(rotate(-180deg));
+        }
+    }
 }

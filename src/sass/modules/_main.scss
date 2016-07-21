@@ -64,11 +64,11 @@ html{
 }
 
 /* Typography*/
-h1, h2, h3, h4, h5, h6, .g-title1, .g-title2, g-title3{
+h1, h2, h3, h4, h5, h6, .g-title1, .g-title2, .g-title3{
   margin-top: 0;
   color:$title-color;
   font-family:$font-title;
-  font-weight:bold;
+  font-weight:600;
 }
 .g-title1{
     display:block;

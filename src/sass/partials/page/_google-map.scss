@@ -1,0 +1,20 @@
+﻿@import "../../modules/_base.scss";
+/*Google Map*/
+.g-map{
+    height:300px;
+    background:$bg-alt;
+
+    .g-title3 {
+        margin:0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    @include media($tablet){
+        height:400px;
+    }
+
+    @include media($desktop){
+        height:550px;
+    }
+}

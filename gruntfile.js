@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ['src/sass/main.scss','src/sass/**/*.scss'],
-				tasks: ['sass:dist', 'autoprefixer:dist', 'cssmin']
+				tasks: ['sass:dist', 'autoprefixer:dist', 'cssmin', 'usebanner:css']
 			},
 			livereload: {
 				files: ['dist/*.html', 'src/js/*.js', 'dist/css/*.css','dist/img/**/*.{png,jpg,jpeg,gif,webp,svg}'],
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['src/js/*.js'],
-				tasks: ['concat', 'uglify'],
+				tasks: ['concat', 'uglify', 'usebanner:js'],
 				options: {
 					spawn: false,
 				},
@@ -35,7 +35,8 @@ module.exports = function(grunt) {
 			options: {
 				sourceMap: false,
 				//outputStyle: 'compressed'
-				outputStyle: 'compact'
+				//outputStyle: 'compact'
+				outputStyle: 'expanded'
 			},
 			dist: {
 				files: {
@@ -118,19 +119,29 @@ module.exports = function(grunt) {
 			' */\n'
 		},
 		usebanner: {
-		  taskName: {
+		  css: {
 			options: {
 			  position: 'top',
 			  banner: '<%= tag.banner %>',
 			  linebreak: true
 			},
 			files: {
-			  src: ['dist/css/app.min.css',
+			  src: ['dist/css/app.min.css']
+			},
+		  },
+		  js: {
+			options: {
+			  position: 'top',
+			  banner: '<%= tag.banner %>',
+			  linebreak: true
+			},
+			files: {
+			  src: [
 				'dist/js/app.min.js',
 				'dist/js/app.js'
 			  ]
-			}
-		  }
+			},
+		  },
 		},
 		newer:{
 			options:{
@@ -190,6 +201,6 @@ module.exports = function(grunt) {
 	
 	//additional tasks:
 	//grunt copy
-	//grunt usebanner
+	//grunt usebanner:css
 	//grunt imagemin
 };
