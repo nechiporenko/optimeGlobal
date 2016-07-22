@@ -6,61 +6,17 @@
     text-align:center;
 }
 
-.b-footer__main{
-    padding:35px 0;
-    @extend .g-clearfix;
-    border-bottom:1px solid #5d5d5d;
-}
+.b-footer__sole{//копирайт
+    padding:14px 0 25px;
+    font-size:rem(11px);
+    color:#5d5d5d;
 
-.b-footer__col{
-    box-sizing: border-box;
-    min-height:1px;
-    max-width:320px;
-    margin-left:auto;
-    margin-right:auto;
-
-    @include media($desktop){
-        float:left;
-        width:(100%-$grid-gutter*2)/3;
-        margin-left:$grid-gutter;
-        margin-right:0;
-
-        &:first-child{
-            margin-left:0;
-        }
+    @include media($small){
+        font-size:rem(14px);
     }
 }
 
-
-.f-list{
-    @extend .g-clearlist;
-    text-align:left;
-
-    a{
-        color:#fff;
-        text-decoration:none;
-        white-space:nowrap;
-
-        &:hover{
-            color:$primary;
-        }
-    }
-}
-
-.f-list__item{
-    display:block;
-    margin-bottom:20px;
-    padding-left:40px;
-    font-size:rem(14px);
-    text-transform:uppercase;
-    position:relative;
-    line-height:1.2;
-}
-
-.f-list__icon{
-    font-size:rem(22px);
-    color:$primary;
-    position:absolute;
-    left:0;
-    top:-3px;
-}
+@import "footer/_footer-main.scss";
+@import "footer/_scroll-up.scss";
+@import "footer/_callback-button.scss";
+@import "footer/_side-social-links.scss";

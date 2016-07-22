@@ -37,10 +37,13 @@ jQuery.extend(verge);
 // Десктоп меню (выпадайки)
 // Мобильное меню
 // Кнопка скролла страницы
-// Откроем модальное окно по клику на data-modal
 // Стилизация Select
 // Hero Слайдер
 // Гугл карта - загрузим когда промотаем к секции
+// Анимация секций при скролле (на десктопе)
+// Кнопка callback - покажем когда проскроллим к футеру на планшетах и выше
+// Удалим блок с боковыми соц.кнопками при клике на Х
+// Откроем модальное окно по клику на data-modal
 // Если браузер не знает о плейсхолдерах в формах
 
 jQuery(document).ready(function ($) {
@@ -176,32 +179,10 @@ jQuery(document).ready(function ($) {
     //
     // Кнопка скролла страницы
     //---------------------------------------------------------------------------------------
-    (function () {
-        var $scroller = $('<button type="button" class="page__scroll"><i class="icomoon-up"></i></button>');
-        $('body').append($scroller);
-        $(window).on('scroll', function () {
-            if ($(this).scrollTop() > 300) {
-                $scroller.show();
-            } else {
-                $scroller.hide();
-            }
-        });
-        $scroller.on('click', function () {
-            $('html, body').animate({ scrollTop: 0 }, 800);
-            return false;
-        });
-    })();
-
-    //
-    // Откроем модальное окно по клику на data-modal
-    //---------------------------------------------------------------------------------------
-    $('[data-modal]').on('click', function (e) {
-        e.preventDefault();
-        var target = $(this).data('modal');
-        if ($(target).length) {
-            $(target).arcticmodal();
-        }
+    $('.b-footer').on('click', '.js-scroll-up', function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
     });
+    
 
     //
     // Стилизация Select
@@ -341,8 +322,105 @@ jQuery(document).ready(function ($) {
 
     if ($('#map').length) {
         startGoogleMap();
-    }
+    };
 
+    //
+    // Анимация секций при скролле (на десктопе)
+    //---------------------------------------------------------------------------------------
+    function animateOnScroll() {
+        var $elems = $('.js-animate'),
+            $window = $(window);
+
+        //проверка при загрузке страницы
+        $elems.each(function () {
+            var $el = $(this);
+            if ($.inViewport($el)) {//если блок видим
+                animateElem($el);//анимируем
+            };
+        });
+
+        //проверка при скролле
+        $elems = $('.js-animate');
+        $elems.each(function () {
+            var $el = $(this);
+            $window.bind('scroll', checkInView);
+
+            function checkInView() {
+                if ($.inY($el, -50)) {
+                    $window.unbind('scroll', checkInView);//отключили отслеживание
+                    animateElem($el);//анимировали
+                }
+            }
+        });
+
+        function animateElem(el) {
+            var animateClass = el.data('animate');
+            el.removeClass('js-animate').addClass('animated ' + animateClass);
+            setTimeout(function () {//уберем мусор
+                el.removeAttr('data-animate').removeClass('animated ' + animateClass);
+            }, 2000);
+        };
+    };
+
+    if ($('.js-animate').length && $.viewportW() > 992) {
+        animateOnScroll();
+    };
+
+    //
+    // Кнопка callback - покажем когда проскроллим к футеру на планшетах и выше
+    //---------------------------------------------------------------------------------------
+    function showCallbackBtn() {
+        var $window = $(window),
+            $footer = $('.b-footer'),
+            $social = $('.js-social'),
+            $btn = $('.js-callback');
+
+        if ($.inY($footer, 500)) {//проверка при старте
+            $btn.addClass('active');
+        };
+
+        $window.on('scroll', function () {//при скролле
+            if ($.inY($footer, 500)) {
+                $btn.addClass('active');
+                $social.addClass('hidden');
+            } else {
+                $btn.removeClass('active');
+                $social.removeClass('hidden');
+            }
+        });
+    };
+    if ($.viewportW() >= 768) {
+        showCallbackBtn();
+    };
+
+    //
+    // Удалим блок с боковыми соц.кнопками при клике на Х
+    //---------------------------------------------------------------------------------------
+    $('.js-social').on('click', '.js-social-close', function () {
+        $('.js-social').remove();
+    });
+
+    //
+    // Откроем модальное окно по клику на data-modal
+    //---------------------------------------------------------------------------------------
+    $('[data-modal]').on('click', function (e) {
+        e.preventDefault();
+        var target = $(this).data('modal'),
+            $fixed = $('.js-callback, .js-social');//будем фиксить подергивание фиксированных элементов при открытии модального окна
+
+        if ($(target).length) {
+            $(target).arcticmodal({
+                beforeOpen: function () {
+                    $fixed.addClass('g-invisible');
+                },
+                afterClose: function () {
+                    $fixed.removeClass('g-invisible');
+                }
+            });
+        }
+    });
+
+    
     //
     // Если браузер не знает о плейсхолдерах в формах
     //---------------------------------------------------------------------------------------

@@ -159,12 +159,12 @@
                     <span class="g-title2 g-title2--alt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                 </header>
                 <div class="g-row">
-                    <div class="g-col g-col--one-half">
+                    <div class="g-col g-col--one-half js-animate" data-animate="fade-in-left">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia 
                         </p>
                     </div>
-                    <div class="g-col g-col--one-half">
+                    <div class="g-col g-col--one-half js-animate" data-animate="fade-in-right">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia 
                         </p>
@@ -185,7 +185,7 @@
                 </header>
                 <ul class="b-icon__list">
                     <li class="b-icon__item">
-                        <figure class="b-icon">
+                        <figure class="b-icon js-animate" data-animate="fade-in-up">
                             <div class="b-icon__thumb">
                                 <img src="img/icons/icon01.png" class="b-icon__img" alt="" />
                             </div>
@@ -197,7 +197,7 @@
                         </figure>
                     </li>
                     <li class="b-icon__item">
-                        <figure class="b-icon">
+                        <figure class="b-icon js-animate" data-animate="fade-in-up">
                             <div class="b-icon__thumb">
                                 <img src="img/icons/icon02.png" class="b-icon__img" alt="" />
                             </div>
@@ -209,7 +209,7 @@
                         </figure>
                     </li>
                     <li class="b-icon__item">
-                        <figure class="b-icon">
+                        <figure class="b-icon js-animate" data-animate="fade-in-up">
                             <div class="b-icon__thumb">
                                 <img src="img/icons/icon03.png" class="b-icon__img" alt="" />
                             </div>
@@ -221,7 +221,7 @@
                         </figure>
                     </li>
                     <li class="b-icon__item">
-                        <figure class="b-icon">
+                        <figure class="b-icon js-animate" data-animate="fade-in-up">
                             <div class="b-icon__thumb">
                                 <img src="img/icons/icon04.png" class="b-icon__img" alt="" />
                             </div>
@@ -241,7 +241,7 @@
         <section class="b-connect">
             <div class="g-container">
                 <h3 class="b-connect__title">Связаться с нами</h3>
-                <form class="b-connect__inner">
+                <form class="b-connect__inner js-animate" data-animate="fade-in">
                     <div class="g-row">
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
@@ -505,7 +505,7 @@
                     </ul>
                 </div>
                 <div class="b-footer__col">
-                    <ul class="f-list">
+                    <ul class="f-list f-list--centered">
                         <li class="f-list__item">
                             <i class="icomoon-email f-list__icon"></i>
                             <a href="mailto:emailadress@gmail.com">emailadress@gmail.com</a>
@@ -541,12 +541,58 @@
                         </li>
                     </ul>
                 </div>
+                <button type="button" class="b-footer__scroll js-scroll-up">
+                    <i class="icomoon-up"></i>
+                </button>
             </div>
             <!--/footer main section-->
             <div class="b-footer__sole">
-                <span class="b-footer__copy">Copyright&nbsp;&copy;&nbsp;2016. Все права защищены.</span>
+                Copyright&nbsp;&copy;&nbsp;2016. Все права защищены.
             </div>
         </div>
+        <!--callback button-->
+        <div class="b-callback js-callback">
+            <div class="b-callback__inner">
+                <button type="button" class="b-callback__btn" data-modal="#callback">
+                    <i class="icomoon-phone"></i>
+                </button>
+            </div>
+        </div>
+        <!--/callback button-->
+        <!--side social links-->
+        <div class="b-social js-social">
+            <ul class="b-social__list">
+                <li class="b-social__item">
+                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                        <i class="icomoon-facebook"></i>
+                    </a>
+                </li>
+                <li class="b-social__item">
+                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                        <i class="icomoon-twitter"></i>
+                    </a>
+                </li>
+                <li class="b-social__item">
+                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                        <i class="icomoon-google-plus"></i>
+                    </a>
+                </li>
+                <li class="b-social__item">
+                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                        <i class="icomoon-instagram"></i>
+                    </a>
+                </li>
+                <li class="b-social__item">
+                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                        <i class="icomoon-vk"></i>
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="b-social__close js-social-close">
+                <i class="icomoon-close"></i>
+            </button>
+        </div>
+        <!--/side social links-->
     </footer>
     <!--/FOOTER-->
 

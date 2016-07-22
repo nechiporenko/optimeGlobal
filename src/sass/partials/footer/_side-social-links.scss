@@ -1,0 +1,56 @@
+﻿@import "../../modules/_base.scss";
+/*Side social links*/
+.b-social{
+    padding:20px 35px 20px 20px;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+    background:rgba($primary, .9);
+    position:fixed;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    box-shadow:-1px 1px 4px 2px rgba(#000, .2);
+    display:none;
+    z-index:70;//поверх слайдера
+    @extend .g-transition;
+    transition-property:opacity;
+
+    &.hidden{
+        opacity:0;
+    }
+
+    @include media($desktop){
+        display:block;
+    }
+}
+
+.b-social__list{
+    @extend .g-clearlist;
+}
+.b-social__item{
+    display:block;
+    margin-top:10px;
+
+    &:first-child{
+        margin-top:0;
+    }
+}
+
+.b-social__link{
+    @extend .f-social__link;
+    box-shadow:inset 0 0 2px #fff;
+
+    &:hover{
+        color:$primary;
+        background:#fff;
+    }
+}
+
+.b-social__close{
+    @extend .g-clearbutton;
+    color:#fff;
+    position:absolute;
+    top:5px;
+    right:10px;
+    font-size:rem(12px);
+}

@@ -1,0 +1,20 @@
+﻿@import "../../modules/_base.scss";
+/*Footer scroll-up button*/
+.b-footer__scroll{
+    @extend .g-clearbutton;
+    @include size(54px);
+    background:#fff;
+    border-radius:50%;
+    color:$primary;
+    font-size:rem(18px);
+    position:absolute;
+    left:0;
+    top:-26px;
+    z-index:5;
+    box-shadow:0 0 2px -1px rgba(#000, .1), inset 0 0 1px #ccc;
+
+    @include media(min-width 1360px){
+        left:auto;
+        right:-75px;
+    }
+}

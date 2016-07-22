@@ -1,0 +1,95 @@
+﻿@import "../../modules/_base.scss";
+/*Callback button*/
+.b-callback{
+    @include size(166px);
+    position:fixed;
+    right:30px;
+    bottom:220px;
+    line-height:1;
+    z-index:72;
+    display:none; //будем показывать скриптом на десктопе
+}
+
+.b-callback__inner{
+    @include size(130px);
+    border-radius:50%;
+    background:rgba(#fff, .4);
+    position:absolute;
+    top:50%; left:50%;
+    margin:-65px 0 0 -65px;
+
+    &:before{
+        content: '';
+        position: absolute;
+        border: lighten($primary, 35%) solid 5px;
+        border-radius:50%;
+        top: 15px;
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        opacity:0;
+    }
+}
+
+.b-callback,
+.b-callback__inner{
+    border-radius:50%;
+    box-shadow:inset 0 0 2px lighten($primary, 10%);
+}
+
+.b-callback__inner,
+.b-callback__btn{
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.b-callback__btn{
+    @extend .g-clearbutton;
+    @include size(98px);
+    border-radius:50%;
+    background:$primary;
+    color:#fff;
+    font-size:rem(44px);
+    position:absolute;
+    top:50%; left:50%;
+    margin:-49px 0 0 -49px;
+    z-index:75;
+
+    [class^="icomoon-"], [class*=" icomoon-"]{
+        display:inline-block;
+        vertical-align:middle;
+    }
+
+    &:hover{
+        background:darken($primary, 5%);
+        [class^="icomoon-"], [class*=" icomoon-"]{
+            @include animation-name(buzz);
+            @include animation-duration(.15s);
+            @include animation-timing-function(linear);
+            @include animation-iteration-count(infinite);
+        }
+    }
+}
+
+
+@include media($tablet){
+    .b-callback.active{
+        display:block;
+
+        .b-callback__inner{
+            &:before{//включаем пульсацию
+                @include animation-duration(2s);
+                @include animation-name(ripple-out);
+                @include animation-iteration-count(infinite);
+            }
+        }
+    }
+
+    
+}
+
+@include media($extra-large){
+    .b-callback{
+        right:85px;
+    }
+}
