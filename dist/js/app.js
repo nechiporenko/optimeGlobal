@@ -295,7 +295,7 @@ jQuery(document).ready(function ($) {
                 map = new google.maps.Map(document.getElementById('map'), map_options),
                 marker = new google.maps.Marker({
                     position: map_lating,
-                    icon: "img/marker.svg",
+                    icon: "img/marker.png",
                     map: map
                 }),
                 info = new google.maps.InfoWindow({
