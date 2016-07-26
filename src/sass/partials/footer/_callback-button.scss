@@ -2,12 +2,11 @@
 /*Callback button*/
 .b-callback{
     @include size(166px);
-    position:fixed;
-    right:30px;
-    bottom:220px;
+    position:absolute;//на маленьких экранах будем показывать над футером
+    right:-10px;
+    bottom:180px;
     line-height:1;
     z-index:72;
-    display:none; //будем показывать скриптом на десктопе
 }
 
 .b-callback__inner{
@@ -73,19 +72,24 @@
 
 
 @include media($tablet){
-    .b-callback.active{
-        display:block;
+    .b-callback{
+        position:fixed;//на планшетах и выше кнопка будет фиксирована внизу экрана
+        right:30px;
+        bottom:220px;
+        display:none; //будем показывать скриптом при скролле
 
-        .b-callback__inner{
-            &:before{//включаем пульсацию
-                @include animation-duration(2s);
-                @include animation-name(ripple-out);
-                @include animation-iteration-count(infinite);
+        &.active{
+            display:block;
+
+            .b-callback__inner{
+                &:before{//включаем пульсацию (на мелких экранах не включаем чтобы не нагружать браузер)
+                    @include animation-duration(2s);
+                    @include animation-name(ripple-out);
+                    @include animation-iteration-count(infinite);
+                }
             }
         }
-    }
-
-    
+    }    
 }
 
 @include media($extra-large){

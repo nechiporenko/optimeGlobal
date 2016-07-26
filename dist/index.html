@@ -241,19 +241,19 @@
         <section class="b-connect">
             <div class="g-container">
                 <h3 class="b-connect__title">Связаться с нами</h3>
-                <form class="b-connect__inner js-animate" data-animate="fade-in">
+                <form class="b-connect__inner js-animate" data-animate="fade-in" id="order">
                     <div class="g-row">
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
                                 <label class="g-visuallyhidden">Имя</label>
-                                <input type="text" class="g-input" placeholder="* Имя" required />
+                                <input type="text" class="g-input js-validate" placeholder="* Имя" required data-validate="required" />
                                 <span class="g-fieldset__msg">Заполните поле</span>
                             </fieldset>
                         </div>
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
                                 <label class="g-visuallyhidden">Телефон</label>
-                                <input type="text" class="g-input" placeholder="* Номер телефона" required />
+                                <input type="text" class="g-input js-validate" placeholder="* Номер телефона" required data-validate="phone" />
                                 <span class="g-fieldset__msg">Введите корректный номер</span>
                             </fieldset>
                         </div>
@@ -262,15 +262,15 @@
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
                                 <label class="g-visuallyhidden">Email</label>
-                                <input type="text" class="g-input" placeholder="* Email" required />
+                                <input type="text" class="g-input js-validate" placeholder="* Email" required data-validate="email" />
                                 <span class="g-fieldset__msg">Введите корректный email</span>
                             </fieldset>
                         </div>
                         <div class="g-col g-col--one-half">
                             <fieldset class="g-fieldset">
                                 <label class="g-visuallyhidden">Тема</label>
-                                <select class="g-select js-select">
-                                    <option disabled selected value="0">* Тема</option>
+                                <select class="g-select js-select js-validate" data-validate="required">
+                                    <option disabled selected value="label">* Тема</option>
                                     <option value="Тестирование">Тестирование</option>
                                     <option value="Образование за рубежом">Образование за рубежом</option>
                                     <option value="Репетиторство">Репетиторство</option>
@@ -305,12 +305,12 @@
                 <div class="box-modal__inner">
                     <fieldset class="g-fieldset">
                         <label class="g-visuallyhidden">ФИО</label>
-                        <input type="text" class="g-input" placeholder="* ФИО" required />
+                        <input type="text" class="g-input js-validate" placeholder="* ФИО" required data-validate="required" />
                         <span class="g-fieldset__msg">Заполните поле</span>
                     </fieldset>
                     <fieldset class="g-fieldset">
                         <label class="g-visuallyhidden">Телефон</label>
-                        <input type="text" class="g-input" placeholder="* Номер телефона" required />
+                        <input type="text" class="g-input js-validate" placeholder="* Номер телефона" required data-validate="phone" />
                         <span class="g-fieldset__msg">Введите корректный номер</span>
                     </fieldset>
                 </div>
@@ -330,14 +330,14 @@
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">ФИО</label>
-                            <input type="text" class="g-input" placeholder="* ФИО" required />
+                            <input type="text" class="g-input js-validate" placeholder="* ФИО" required data-validate="required" />
                             <span class="g-fieldset__msg">Заполните поле</span>
                         </fieldset>
                     </div>
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Телефон</label>
-                            <input type="text" class="g-input" placeholder="* Номер телефона" required />
+                            <input type="text" class="g-input js-validate" placeholder="* Номер телефона" required data-validate="phone" />
                             <span class="g-fieldset__msg">Введите корректный номер</span>
                         </fieldset>
                     </div>
@@ -346,15 +346,15 @@
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Email</label>
-                            <input type="text" class="g-input" placeholder="* Email" required />
+                            <input type="text" class="g-input js-validate" placeholder="* Email" required data-validate="email" />
                             <span class="g-fieldset__msg">Введите корректный email</span>
                         </fieldset>
                     </div>
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Название курса</label>
-                            <select class="g-select js-select">
-                                <option disabled selected value="0">* Название курса</option>
+                            <select class="g-select js-select js-validate" data-validate="required">
+                                <option disabled selected value="label">* Название курса</option>
                                 <option value="Название курса 1">Название курса 1</option>
                                 <option value="Название курса 2">Название курса 2</option>
                                 <option value="Название курса 3">Название курса 3</option>
@@ -384,14 +384,14 @@
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">ФИО</label>
-                            <input type="text" class="g-input" placeholder="* ФИО" required />
+                            <input type="text" class="g-input js-validate" placeholder="* ФИО" required data-validate="required" />
                             <span class="g-fieldset__msg">Заполните поле</span>
                         </fieldset>
                     </div>
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Телефон</label>
-                            <input type="text" class="g-input" placeholder="* Номер телефона" required />
+                            <input type="text" class="g-input js-validate" placeholder="* Номер телефона" required data-validate="phone" />
                             <span class="g-fieldset__msg">Введите корректный номер</span>
                         </fieldset>
                     </div>
@@ -400,15 +400,15 @@
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Email</label>
-                            <input type="text" class="g-input" placeholder="* Email" required />
+                            <input type="text" class="g-input js-validate" placeholder="* Email" required data-validate="email" />
                             <span class="g-fieldset__msg">Введите корректный email</span>
                         </fieldset>
                     </div>
                     <div class="g-col g-col--one-half">
                         <fieldset class="g-fieldset">
                             <label class="g-visuallyhidden">Тема</label>
-                            <select class="g-select js-select">
-                                <option disabled selected value="0">* Тема</option>
+                            <select class="g-select js-select js-validate" data-validate="required">
+                                <option disabled selected value="label">* Тема</option>
                                 <option value="Тема 1">Тема 1</option>
                                 <option value="Тема 2">Тема 2</option>
                                 <option value="Тема 3">Тема 3</option>
@@ -431,6 +431,16 @@
                 </button>
             </form>
             <!--/получить консультацию-->
+
+            <!--ok message-->
+            <div class="box-modal g-text-center" id="ok_msg">
+                <span class="g-title1">Данные отправлены!</span>
+                <p>Спасибо за Вашу заявку!</p>
+                <button type="button" class="box-modal_close arcticmodal-close">
+                    <i class="icomoon-close"></i>
+                </button>
+            </div>
+            <!--/ok message-->
         </div>
         <!--/MODAL WINDOWS-->
 
@@ -541,58 +551,66 @@
                         </li>
                     </ul>
                 </div>
+
+                <!--scroll-up button-->
                 <button type="button" class="b-footer__scroll js-scroll-up">
                     <i class="icomoon-up"></i>
                 </button>
+                <!--/scroll-up button-->
+
+                <!--callback button-->
+                <div class="b-callback js-callback">
+                    <div class="b-callback__inner">
+                        <button type="button" class="b-callback__btn" data-modal="#callback">
+                            <i class="icomoon-phone"></i>
+                        </button>
+                    </div>
+                </div>
+                <!--/callback button-->
             </div>
             <!--/footer main section-->
             <div class="b-footer__sole">
                 Copyright&nbsp;&copy;&nbsp;2016. Все права защищены.
             </div>
         </div>
-        <!--callback button-->
-        <div class="b-callback js-callback">
-            <div class="b-callback__inner">
-                <button type="button" class="b-callback__btn" data-modal="#callback">
-                    <i class="icomoon-phone"></i>
-                </button>
-            </div>
-        </div>
-        <!--/callback button-->
-        <!--side social links-->
-        <div class="b-social js-social">
-            <ul class="b-social__list">
-                <li class="b-social__item">
-                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+
+        <!--side share buttons-->
+        <div class="b-share js-share">
+            <ul class="b-share__list">
+                <li class="b-share__item">
+                    <button type="button" class="b-share__btn">
                         <i class="icomoon-facebook"></i>
-                    </a>
+                    </button>
                 </li>
-                <li class="b-social__item">
-                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                <li class="b-share__item">
+                    <button type="button" class="b-share__btn">
                         <i class="icomoon-twitter"></i>
-                    </a>
+                    </button>
                 </li>
-                <li class="b-social__item">
-                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                <li class="b-share__item">
+                    <button type="button" class="b-share__btn">
                         <i class="icomoon-google-plus"></i>
-                    </a>
+                    </button>
                 </li>
-                <li class="b-social__item">
-                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                <li class="b-share__item">
+                    <button type="button" class="b-share__btn">
                         <i class="icomoon-instagram"></i>
-                    </a>
+                    </button>
                 </li>
-                <li class="b-social__item">
-                    <a href="#" class="b-social__link" rel="nofollow" target="_blank">
+                <li class="b-share__item">
+                    <button type="button" class="b-share__btn">
                         <i class="icomoon-vk"></i>
-                    </a>
+                    </button>
                 </li>
             </ul>
-            <button type="button" class="b-social__close js-social-close">
+            <button type="button" class="b-share__hide js-share-hide" title="Скрыть панель">
                 <i class="icomoon-close"></i>
             </button>
+            <button type="button" class="b-share__show js-share-show" title="Показать панель">
+                <i class="icomoon-left"></i>
+            </button>
         </div>
-        <!--/side social links-->
+        <!--/side share buttons-->
     </footer>
     <!--/FOOTER-->
 
@@ -601,6 +619,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/app.min.js"></script>
+    <script src="js/validate.js"></script>
     <!--/SCRIPTS-->
 </body>
 </html>

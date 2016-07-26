@@ -41,8 +41,8 @@ jQuery.extend(verge);
 // Hero Слайдер
 // Гугл карта - загрузим когда промотаем к секции
 // Анимация секций при скролле (на десктопе)
-// Кнопка callback - покажем когда проскроллим к футеру на планшетах и выше
-// Удалим блок с боковыми соц.кнопками при клике на Х
+// Кнопка callback - покажем когда проскроллим к футеру
+// Покажем / спрячем панель с Share кнопками
 // Откроем модальное окно по клику на data-modal
 // Если браузер не знает о плейсхолдерах в формах
 
@@ -188,9 +188,11 @@ jQuery(document).ready(function ($) {
     // Стилизация Select
     //---------------------------------------------------------------------------------------
     $('.js-select').each(function () {
-        $(this).selectric({
+        var $el = $(this);
+
+        $el.selectric({
             disableOnMobile: false,
-            responsive: true
+            responsive: true,
         });
     });
 
@@ -367,12 +369,12 @@ jQuery(document).ready(function ($) {
     };
 
     //
-    // Кнопка callback - покажем когда проскроллим к футеру на планшетах и выше
+    // Кнопка callback - покажем когда проскроллим к футеру
     //---------------------------------------------------------------------------------------
-    function showCallbackBtn() {
+    (function () {
         var $window = $(window),
             $footer = $('.b-footer'),
-            $social = $('.js-social'),
+            $share = $('.js-share'), //когда будем показывать кнопку - скроем панель с share-линками чтобы они не перекрывали друг друга
             $btn = $('.js-callback');
 
         if ($.inY($footer, 500)) {//проверка при старте
@@ -382,43 +384,50 @@ jQuery(document).ready(function ($) {
         $window.on('scroll', function () {//при скролле
             if ($.inY($footer, 500)) {
                 $btn.addClass('active');
-                $social.addClass('hidden');
+                $share.addClass('g-hidden');
             } else {
                 $btn.removeClass('active');
-                $social.removeClass('hidden');
+                $share.removeClass('g-hidden');
             }
         });
-    };
-    if ($.viewportW() >= 768) {
-        showCallbackBtn();
-    };
+    })();
 
     //
-    // Удалим блок с боковыми соц.кнопками при клике на Х
+    // Покажем / спрячем панель с Share кнопками
     //---------------------------------------------------------------------------------------
-    $('.js-social').on('click', '.js-social-close', function () {
-        $('.js-social').remove();
-    });
+    (function () {
+        var $panel = $('.js-share');
+        $panel.on('click', '.js-share-hide', function () {
+            $panel.addClass('hidden');
+        }).on('click', '.js-share-show', function () {
+            $panel.removeClass('hidden');
+        });
+    })();
 
     //
     // Откроем модальное окно по клику на data-modal
     //---------------------------------------------------------------------------------------
-    $('[data-modal]').on('click', function (e) {
-        e.preventDefault();
-        var target = $(this).data('modal'),
-            $fixed = $('.js-callback, .js-social');//будем фиксить подергивание фиксированных элементов при открытии модального окна
+    (function () {
+        var $fixed_el = $('.js-callback, .js-share');//будем фиксить подергивание фиксированных элементов на странице при открытии модального окна
+        $('[data-modal]').on('click', function (e) {
+            e.preventDefault();
+            var target = $(this).data('modal');
 
-        if ($(target).length) {
-            $(target).arcticmodal({
-                beforeOpen: function () {
-                    $fixed.addClass('g-invisible');
-                },
-                afterClose: function () {
-                    $fixed.removeClass('g-invisible');
-                }
-            });
-        }
-    });
+            if ($(target).length) {
+                $(target).arcticmodal();
+            };
+        });
+
+        $.arcticmodal('setDefault', {
+            beforeOpen: function () {
+                $fixed_el.addClass('g-invisible');
+            },
+            afterClose: function () {
+                $fixed_el.removeClass('g-invisible');
+            }
+        });
+    })();
+    
 
     
     //

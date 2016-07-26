@@ -171,3 +171,17 @@
 .selectric-items .selectric-group li {
   padding-left: 25px;
 }
+
+
+
+//подсветка при валидации
+$error-color:#e74c3c;
+.g-fieldset.error{
+    .selectric{
+        border-bottom-color:  $error-color;
+
+        .label{
+            color:$error-color;
+        }
+    }
+}
