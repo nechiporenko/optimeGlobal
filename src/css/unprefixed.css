@@ -1655,6 +1655,10 @@ input[type="radio"] {
   padding-bottom: 100px;
 }
 
+.page__main {
+  margin-bottom: 48px;
+}
+
 .page__main .g-title1, .page__main .b-connect__title, .page__main .g-title2, .page__main .b-icon__title, .page__main .g-title3 {
   margin-bottom: 20px;
 }
@@ -1662,6 +1666,7 @@ input[type="radio"] {
 @media screen and (min-width: 48em) {
   .page__main {
     float: right;
+    margin-bottom: 0;
     width: 65.8807826589%;
   }
   .page__side {

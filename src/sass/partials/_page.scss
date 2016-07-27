@@ -47,6 +47,8 @@
 }
 
 .page__main{
+    margin-bottom:2*$project-line-height;
+
     @extend .page__section--font2;
 
     .g-title1, .g-title2, .g-title3{
@@ -58,6 +60,7 @@
 @include media($tablet){
     .page__main{
         float:right;
+        margin-bottom:0;
         width: 2*(100%-$grid-gutter*2)/3 + $grid-gutter;
     }
 
