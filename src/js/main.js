@@ -342,12 +342,12 @@ jQuery(document).ready(function ($) {
             $share = $('.js-share'), //когда будем показывать кнопку - скроем панель с share-линками чтобы они не перекрывали друг друга
             $btn = $('.js-callback');
 
-        if ($.inY($footer, 500)) {//проверка при старте
+        if ($.inY($footer, 300)) {//проверка при старте
             $btn.addClass('active');
         };
 
         $window.on('scroll', function () {//при скролле
-            if ($.inY($footer, 500)) {
+            if ($.inY($footer, 300)) {
                 $btn.addClass('active');
                 $share.addClass('g-hidden');
             } else {

@@ -20,6 +20,22 @@
     margin:0 auto;
 }
 
+.g-container__form{ //контейнер формы Связаться с нами
+    max-width:625px;
+    margin:0 auto;
+
+    @include media($desktop){
+        .g-col--one-half{
+            &:first-child{
+                padding-right:10px;
+            }
+            &:last-child{
+                padding-left:10px;
+            }
+        }
+    }
+}
+
 .g-row{
     @include row();
 }

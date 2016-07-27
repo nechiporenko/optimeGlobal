@@ -201,9 +201,11 @@
     };
 
     //связаться с нами
-    var order_form = document.getElementById('order'),
-        order = new Validate(order_form);
-    order_form.addEventListener('submit', order_send.bind(order));
+    var order_form = document.getElementById('order');
+    if(order_form !==null){
+        var order = new Validate(order_form);
+        order_form.addEventListener('submit', order_send.bind(order));
+    }
 
     function order_send(e) {
         e.preventDefault();//вырубили стандартную отправку

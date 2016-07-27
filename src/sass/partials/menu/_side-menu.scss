@@ -1,0 +1,141 @@
+﻿@import "../../modules/_base.scss";
+/*Sidebar menu*/
+.p-menu,
+.p-submenu{
+    @extend .g-clearlist;
+    line-height:1;
+
+    a{
+        color:$text-color;
+        text-decoration:none !important;
+        position:relative;
+
+        &:hover,
+        &:active{
+            color:$primary;
+        }
+    }
+}
+
+.p-submenu{
+    display:none;
+}
+
+.p-menu__item,
+.p-submenu__item{
+    display:block;
+}
+.p-menu__item{
+    margin-bottom:15px;
+    background:#fff;
+    border-left:5px solid #d5d5d5;
+    box-shadow:0 1px 4px -1px rgba(#000, .2);
+    @extend .g-transition;
+    transition-property:border-color, box-shadow;
+
+    &:hover{
+        box-shadow:1px 1px 2px 2px rgba(#000, .1);
+        border-color:$primary;
+    }
+
+    & > a{
+        display:block;
+        padding:20px 35px 20px 20px;
+        line-height:1.16;
+        font-size:rem(18px);
+        font-weight:bold;
+        text-transform:uppercase;
+    }
+
+    & > .p-submenu{
+        padding-top:4px;
+        padding-bottom:11px;
+    }
+}
+
+.p-submenu__item{
+    & > a {
+        display:inline-block;
+        padding:9px 20px;
+        line-height:1.24;
+        font-size:rem(16px);
+        text-shadow: .01px .01px .01px rgba($text-color, .1);
+    }
+
+    .p-submenu__item{
+        a{
+            padding:4px 30px;
+            color:lighten($text-color-alt, 10%);
+            font-size:rem(14px);
+            text-shadow:none;
+
+            &:hover,
+            &:active{
+                color:$primary;
+            }
+        }
+    }
+}
+
+//раскрывашки
+.p-menu__item{
+    &.current{
+        border-left-color:$primary;
+        box-shadow:1px 1px 2px 2px rgba(#000, .1);
+
+        & > .p-submenu{
+            display:block;
+        }
+
+        & > a{
+            color:$primary;
+
+            &:before{
+                content:'';
+                position:absolute;
+                border-top:1px solid #d5d5d5;
+                bottom:0;
+                left:20px; right:0;
+            }
+
+            &:after{
+                content:'\e901';
+                position:absolute;
+                font-family:'icomoon';
+                top:50%;
+                margin-top:-9px;
+                right:16px;
+                font-size:rem(16px);
+            }
+        }
+    }
+}
+
+.p-submenu__item{
+    &.current{
+        & > .p-submenu{
+            display:block;
+        }
+
+        & > a{
+            color:$primary;
+        }
+
+        .p-submenu__item.current{
+            a{
+                cursor:default;
+                &:after{
+                    content:'\e90e';
+                    font-family:'icomoon';
+                    position:absolute;
+                    right:10px;
+                    top:50%;
+                    margin-top:-7px;
+                    font-size:rem(12px);
+                }
+            }
+        }
+    }
+
+    
+}

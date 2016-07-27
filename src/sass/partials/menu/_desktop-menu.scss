@@ -96,12 +96,15 @@
         text-decoration:none;
         line-height:1.2;
 
-        &:hover,
-        &.current{
+        &:hover{
             text-decoration:underline;
         }
+    }
 
-        &.current{
+    &.current,
+    &.current-menu-item{
+        & > a{
+            text-decoration:underline;
             cursor:default;
         }
     }

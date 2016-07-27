@@ -35,6 +35,7 @@ $error-color:#e74c3c;
     @include placeholder{
         color:$text-color-alt;
         text-overflow:ellipsis;
+        opacity:1;
     }
 
     &:hover,

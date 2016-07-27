@@ -57,8 +57,7 @@
 }
 
 .b-connect__inner{
-    max-width:625px;
-    margin:0 auto;
+    @extend .g-container__form;
 }
 
 .b-connect__btn{

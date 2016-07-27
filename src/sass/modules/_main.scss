@@ -49,18 +49,23 @@ html{
 .page{//body style
     min-height:100%;
     font-family: $font-regular, "Helvetica CY", "Nimbus Sans L", sans-serif;
-    
+    background:$bg-alt;
 }
 
 .page__content{
     font-size:rem($project-font-size);
     line-height:strip-units($project-line-height/$project-font-size);
+    min-height:550px;
 
     a{
         text-decoration:none;
         &:hover{
             text-decoration:underline;
         }
+    }
+
+    @include media($extra-large){
+        min-height:700px;
     }
 }
 
@@ -109,9 +114,11 @@ a {
 ul {
     list-style: disc outside; }
 ol {
-    list-style: decimal outside; }
+    list-style: decimal outside;
+}
 ol, ul {
     margin-top: 0;
+    padding-left:18px;
 }
 
 ul ul,
@@ -176,7 +183,7 @@ ol{
 
 /* Misc */
 hr {
-    margin: $project-line-height 0;
+    margin: 2*$project-line-height 0;
     border-width: 0;
     border-top: 1px solid $border-color;
 }

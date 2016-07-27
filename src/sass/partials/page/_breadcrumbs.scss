@@ -1,3 +1,36 @@
 ﻿@import "../../modules/_base.scss";
 /*Breadcrumbs*/
-.breadcrumbs{}
+.breadcrumbs{
+    padding:0;
+    margin:0 0 5px;
+    font-size:rem(12px);
+    line-height:1.1;
+    list-style-type:none;
+    color:$text-color-alt;
+}
+.breadcrumbs__item{
+    display:inline-block;
+    position:relative;
+
+    &:after{
+        content:'\e90e';
+        font-family:'icomoon';
+        font-size:rem(8px);
+        margin:0 3px;
+    }
+
+    &:last-child{
+        &:after{
+            display:none;
+        }
+    }
+}
+.breadcrumbs__link{
+    color:$text-color-alt;
+    text-decoration:none;
+
+    &:hover,
+    &:active{
+        color:$primary;
+    }
+}
