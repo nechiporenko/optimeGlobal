@@ -79,10 +79,14 @@
     }
 }
 
+
 @import "page/_hero-slider.scss";
 @import "page/_icon-block.scss";//блок с иконками на главной
 @import "page/_connect.scss";//блок Связаться с нами на главной
-@import "page/_google-map.scss";
+@import "page/_google-map.scss";//блок с Гугл-картой
+@import "page/_contacts.scss"; //страница Контакты
+@import "page/_items-list.scss"; //список Университетов и т.п.
+@import "page/_pagination.scss"; //пагинация
 
 
 

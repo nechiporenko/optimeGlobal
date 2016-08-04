@@ -1,0 +1,38 @@
+﻿@import "../../modules/_base.scss";
+/*Pagination*/
+.b-pagination{
+    margin:35px 0;
+    padding:5px 0;
+    border-top:1px solid $border-color;
+    border-bottom:1px solid $border-color;
+    line-height:1.2;
+    font-size:0;
+    text-align:center;
+
+    @include media($large){
+        text-align:right;
+    }
+
+    a, span{
+        display:inline-block;
+        vertical-align:middle;
+        padding:3px 7px;
+        margin:0 3px;
+        font-size:rem(14px);
+    }
+
+    a{
+        color:$text-color-alt;
+        text-decoration:none !important;
+
+        &:hover{
+            color:$primary;
+        }
+    }
+}
+
+.b-pagination__current{
+    color:#fff;
+    background:$primary;
+}
+

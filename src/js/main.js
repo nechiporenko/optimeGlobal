@@ -1,5 +1,5 @@
 ﻿// Переключатель языка
-// Десктоп меню (выпадайки)
+// Десктоп меню (выпадайки) + хелпер для бокового меню
 // Мобильное меню
 // Кнопка скролла страницы
 // Стилизация Select
@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
     })();
 
     //
-    // Десктоп меню (выпадайки)
+    // Десктоп меню (выпадайки) + хелпер для бокового меню
     //---------------------------------------------------------------------------------------
     (function () {
         var $menu = $('.js-menu li');
@@ -66,6 +66,11 @@ jQuery(document).ready(function ($) {
                 $(this).find('a:first').removeClass('hover');
             }
         });
+
+        //хелпер для бокового меню
+        var $side_menu = $('.p-menu li');
+        $side_menu.has('ul').children('a').addClass('has-menu');
+
     })();
 
     //
@@ -340,14 +345,16 @@ jQuery(document).ready(function ($) {
         var $window = $(window),
             $footer = $('.b-footer'),
             $share = $('.js-share'), //когда будем показывать кнопку - скроем панель с share-линками чтобы они не перекрывали друг друга
-            $btn = $('.js-callback');
+            $btn = $('.js-callback'),
+            from_bottom = 200; //bottom offset
 
-        if ($.inY($footer, 300)) {//проверка при старте
+        if ($.inY($footer, from_bottom)) {//проверка при старте
             $btn.addClass('active');
+            $share.addClass('g-hidden');
         };
 
         $window.on('scroll', function () {//при скролле
-            if ($.inY($footer, 300)) {
+            if ($.inY($footer, from_bottom)) {
                 $btn.addClass('active');
                 $share.addClass('g-hidden');
             } else {
