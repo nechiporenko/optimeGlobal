@@ -400,8 +400,40 @@ jQuery(document).ready(function ($) {
         });
     })();
     
+    //
+    // Staff-slider
+    //---------------------------------------------------------------------------------------
+    function initStaffSlider() {
+        //var $slider = $('.js-staff');
+        //$slider.bxSlider({
+        //    auto: false,
+        //    pager: true,
+        //    slideMargin: 10,
+        //    //nextSelector: $('.js-staff-next'),
+        //    //prevSelector: $('.js-staff-prev'),
+        //    //nextText: '',
+        //    //prevText:'',
+        //});
+        //$('.js-staff').bxSlider({
+        //    //auto: false,
+        //    //pager: true
+        //});
+        var $slider = $('.js-staff');
+        $slider.bxSlider({
+            auto: false,
+            pager: true,
+            slideMargin: 10,
+            nextSelector: $('.js-staff-next'),
+            prevSelector: $('.js-staff-prev'),
+            nextText: '',
+            prevText:'',
+        });
+    }
+    if ($('.js-staff').length) {
+        initStaffSlider();
+    }
 
-    
+
     //
     // Если браузер не знает о плейсхолдерах в формах
     //---------------------------------------------------------------------------------------

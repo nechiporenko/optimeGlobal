@@ -15,8 +15,8 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "^3.1.0",
     "bourbon": "^4.2.7",
-    "neat": "^1.8.0"
+    "neat": "^1.8.0",
+    "jQuery": "2.2.4"
   }
 }

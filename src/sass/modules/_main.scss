@@ -104,9 +104,13 @@ h1, h2, h3, h4, h5, h6, .g-title1, .g-title2, .g-title3{
     line-height:1.25;
 }
 
+.g-brand-color{
+    color:$primary;
+}
+
 /* Links */
 a {
-  color: $primary;
+  color:$primary;
 }
 
 
