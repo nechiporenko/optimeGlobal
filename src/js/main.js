@@ -9,6 +9,8 @@
 // Кнопка callback - покажем когда проскроллим к футеру
 // Покажем / спрячем панель с Share кнопками
 // Откроем модальное окно по клику на data-modal
+// Staff-slider
+// FAQ - покажем/спрячем контент в блоках
 // Если браузер не знает о плейсхолдерах в формах
 
 jQuery(document).ready(function ($) {
@@ -346,7 +348,7 @@ jQuery(document).ready(function ($) {
             $footer = $('.b-footer'),
             $share = $('.js-share'), //когда будем показывать кнопку - скроем панель с share-линками чтобы они не перекрывали друг друга
             $btn = $('.js-callback'),
-            from_bottom = 200; //bottom offset
+            from_bottom = 100; //bottom offset
 
         if ($.inY($footer, from_bottom)) {//проверка при старте
             $btn.addClass('active');
@@ -404,20 +406,6 @@ jQuery(document).ready(function ($) {
     // Staff-slider
     //---------------------------------------------------------------------------------------
     function initStaffSlider() {
-        //var $slider = $('.js-staff');
-        //$slider.bxSlider({
-        //    auto: false,
-        //    pager: true,
-        //    slideMargin: 10,
-        //    //nextSelector: $('.js-staff-next'),
-        //    //prevSelector: $('.js-staff-prev'),
-        //    //nextText: '',
-        //    //prevText:'',
-        //});
-        //$('.js-staff').bxSlider({
-        //    //auto: false,
-        //    //pager: true
-        //});
         var $slider = $('.js-staff');
         $slider.bxSlider({
             auto: false,
@@ -431,8 +419,25 @@ jQuery(document).ready(function ($) {
     }
     if ($('.js-staff').length) {
         initStaffSlider();
-    }
+    };
 
+    //
+    // FAQ - покажем/спрячем контент в блоках
+    //---------------------------------------------------------------------------------------
+    function toggleFAQblocks() {
+        var $grid = $('.js-faq');
+        $grid.on('click', '.b-faq__inner', function () {
+            var $el = $(this);
+            if ($el.hasClass('active')) {
+                $el.removeClass('active').find('.b-faq__entry').slideUp(200);
+            } else {
+                $el.addClass('active').find('.b-faq__entry').slideDown(200);
+            }
+        });
+    }
+    if ($('.js-faq').length) {
+        toggleFAQblocks();
+    }
 
     //
     // Если браузер не знает о плейсхолдерах в формах

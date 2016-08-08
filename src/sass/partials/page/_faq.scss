@@ -1,0 +1,144 @@
+﻿@import "../../modules/_base.scss";
+/*FAQ*/
+.b-faq{
+    padding:30px 0 80px;
+    line-height:1;
+    @extend .g-clearfix;
+
+    @include media($large){
+        padding:30px 25px 80px;
+    }
+}
+
+//salvattore grid
+.b-faq__item{
+    padding:0 10px;
+    box-sizing:border-box;
+}
+
+@media screen and (max-width: 480px){
+	#grid[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+	#grid[data-columns]::before {
+		content: '2 .column.size-1of2';
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	#grid[data-columns]::before {
+		content: '3 .column.size-1of3';
+	}
+}
+
+@media screen and (min-width: 992px){
+    #grid[data-columns]::before {
+		content: '4 .column.size-1of4';
+	}
+}
+
+.b-faq{
+    .column{
+        float: left;
+        box-sizing: border-box;
+        min-height:1px;
+    }
+    .size-1of1 { width: 100%; }
+    .size-1of2 { width: 50%; }
+    .size-1of3 { width: 33.333%; }
+    .size-1of4 {width: 25%; }
+}
+
+
+.no-js{
+    #grid[data-columns]::before{
+        visibility:hidden;
+    }
+}
+
+//inners
+.b-faq__inner{
+    max-width:260px;
+    margin:0 auto 20px;
+    background:#fff;
+    @extend .g-transition;
+    transition-property:box-shadow;
+    cursor:pointer;
+}
+
+.b-faq__thumb{
+    position:relative;
+    background:#fff;
+
+    &:after{
+        content:'';
+        display:block;
+        padding-top:194*100%/260; //260x194
+    }
+}
+
+.b-faq__img{
+    @extend .b-list__img;    
+}
+
+.b-faq__title{
+    display:block;
+    padding:12px 16px;
+    min-height:84px;
+    font-size:rem(16px);
+    line-height:1.25;
+    font-weight:bold;
+    color:$title-color;
+    position:relative;
+    box-sizing:border-box;
+
+    &:after{
+        content:'';
+        height:2px;
+        position:absolute;
+        left:0;
+        bottom:0;
+        right:0;
+        background:#d5d5d5;
+        transition-property:all;
+        @extend .g-transition;
+    }
+}
+
+.b-faq__entry{
+    padding:4px 16px;
+    font-size:rem(14px);
+    line-height:1.28;
+
+    p{
+        margin:12px 0;
+    }
+}
+
+.js .b-faq__entry{
+    display:none;
+}
+
+
+//раскрывашка
+.b-faq__inner{
+    &:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+
+        .b-faq__img{
+            opacity:.8;
+        }
+    }
+    &.active{
+        .b-faq__title{
+            &:after{
+                left:16px;
+                right:16px;
+                background:$primary;
+            }
+        }
+    }
+    
+}

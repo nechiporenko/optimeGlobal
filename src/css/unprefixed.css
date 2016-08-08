@@ -443,8 +443,8 @@ hr {
 /* Transitions */
 .g-transition, a, button, input[type="button"], input[type="submit"],
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea, select, .h-menu__item > a:after, .p-menu__item, .b-hero__prev,
-.b-hero__next, .b-list__img, .b-staff__nav .bx-prev:before,
-.b-staff__nav .bx-next:before, .b-share, .bx-wrapper .bx-pager.bx-default-pager a, .bx-controls-direction a, .selectric {
+.b-hero__next, .b-list__img, .b-faq__img, .b-staff__nav .bx-prev:before,
+.b-staff__nav .bx-next:before, .b-faq__inner, .b-faq__title:after, .b-share, .bx-wrapper .bx-pager.bx-default-pager a, .bx-controls-direction a, .selectric {
   transition-duration: .2s;
   transition-timing-function: ease-in;
 }
@@ -503,7 +503,7 @@ img.g-full-width, img.g-table {
   box-sizing: border-box;
 }
 
-.g-img-centered, .b-icon__img, .b-list__img, .b-staff__img {
+.g-img-centered, .b-icon__img, .b-list__img, .b-faq__img, .b-staff__img {
   position: absolute;
   top: 0;
   right: 0;
@@ -589,7 +589,7 @@ img.g-full-width, img.g-table {
   visibility: hidden;
 }
 
-.g-clearfix::after, .b-icon__list::after, .b-staff__inner::after, .b-footer__main::after {
+.g-clearfix::after, .b-icon__list::after, .b-staff__inner::after, .b-faq::after, .b-footer__main::after {
   clear: both;
   content: "";
   display: block;
@@ -2260,11 +2260,11 @@ input[type="radio"] {
   margin: 0 auto 20px;
 }
 
-.b-list__link:hover .b-list__img {
+.b-list__link:hover .b-list__img, .b-list__link:hover .b-faq__img {
   opacity: .8;
 }
 
-.b-list__img {
+.b-list__img, .b-faq__img {
   backface-visibility: hidden;
   transition-property: opacity;
 }
@@ -2545,6 +2545,143 @@ input[type="radio"] {
     margin-left: 200px;
     padding-top: 25px;
   }
+}
+
+/*FAQ*/
+.b-faq {
+  padding: 30px 0 80px;
+  line-height: 1;
+}
+
+@media screen and (min-width: 75em) {
+  .b-faq {
+    padding: 30px 25px 80px;
+  }
+}
+
+.b-faq__item {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  #grid[data-columns]::before {
+    content: '1 .column.size-1of1';
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #grid[data-columns]::before {
+    content: '3 .column.size-1of3';
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #grid[data-columns]::before {
+    content: '4 .column.size-1of4';
+  }
+}
+
+.b-faq .column {
+  float: left;
+  box-sizing: border-box;
+  min-height: 1px;
+}
+
+.b-faq .size-1of1 {
+  width: 100%;
+}
+
+.b-faq .size-1of2 {
+  width: 50%;
+}
+
+.b-faq .size-1of3 {
+  width: 33.333%;
+}
+
+.b-faq .size-1of4 {
+  width: 25%;
+}
+
+.no-js #grid[data-columns]::before {
+  visibility: hidden;
+}
+
+.b-faq__inner {
+  max-width: 260px;
+  margin: 0 auto 20px;
+  background: #fff;
+  transition-property: box-shadow;
+  cursor: pointer;
+}
+
+.b-faq__thumb {
+  position: relative;
+  background: #fff;
+}
+
+.b-faq__thumb:after {
+  content: '';
+  display: block;
+  padding-top: 74.6153846154%;
+}
+
+.b-faq__title {
+  display: block;
+  padding: 12px 16px;
+  min-height: 84px;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.b-faq__title:after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #d5d5d5;
+  transition-property: all;
+}
+
+.b-faq__entry {
+  padding: 4px 16px;
+  font-size: 0.875rem;
+  line-height: 1.28;
+}
+
+.b-faq__entry p {
+  margin: 12px 0;
+}
+
+.js .b-faq__entry {
+  display: none;
+}
+
+.b-faq__inner:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.b-faq__inner:hover .b-faq__img {
+  opacity: .8;
+}
+
+.b-faq__inner.active .b-faq__title:after {
+  left: 16px;
+  right: 16px;
+  background: #319fd1;
 }
 
 /*Site Footer*/
