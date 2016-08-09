@@ -156,7 +156,7 @@
                     alert(thrownError);
                 },
                 complete: function (data) {
-                    $(callback_form).find('button[type="submit"]').prop('disabled', 'false');//разблокируем кнопку
+                    $(callback_form).find('button[type="submit"]').removeAttr('disabled');//разблокируем кнопку
                 }
             });
 

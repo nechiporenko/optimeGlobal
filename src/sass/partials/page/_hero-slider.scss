@@ -90,14 +90,15 @@
 
 .b-hero__title{
     display:block;
-    margin-bottom:$project-line-height/2;
+    margin-bottom:8px;
     line-height:1.1;
-    font-size:rem(14px);
+    font-size:rem(12px);
     font-weight:bold;
     text-transform:uppercase;
     color:#fff;
 
     @include media($small){
+        margin-bottom:$project-line-height/2;
         font-size:rem(18px);
     }
 

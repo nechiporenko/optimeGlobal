@@ -30,6 +30,10 @@
     }
 }
 
+.b-icon__info{
+    margin-bottom:$project-line-height;
+}
+
 .b-icon__title{
     @extend .g-title2;
     margin-bottom:18px;

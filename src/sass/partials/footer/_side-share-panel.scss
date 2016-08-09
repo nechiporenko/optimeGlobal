@@ -6,7 +6,7 @@
     border-bottom-left-radius:10px;
     background:rgba($primary, .9);
     position:fixed;
-    right:0;
+    right:-300px;
     top:50%;
     transform:translateY(-50%);
     box-shadow:-1px 1px 4px 2px rgba(#000, .2);
@@ -19,8 +19,12 @@
         display:block;
         will-change: right;
 
-        &.hidden{
-            right:-100px;
+        &.active{
+            right:0;
+
+            &.hidden{
+                right:-100px;
+            }
         }
     }
 }

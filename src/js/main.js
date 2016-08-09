@@ -6,8 +6,8 @@
 // Hero Слайдер
 // Гугл карта - загрузим когда промотаем к секции
 // Анимация секций при скролле (на десктопе)
-// Кнопка callback - покажем когда проскроллим к футеру
 // Покажем / спрячем панель с Share кнопками
+// Кнопка callback - покажем когда проскроллим к футеру
 // Откроем модальное окно по клику на data-modal
 // Staff-slider
 // FAQ - покажем/спрячем контент в блоках
@@ -341,6 +341,19 @@ jQuery(document).ready(function ($) {
     };
 
     //
+    // Покажем / спрячем панель с Share кнопками
+    //---------------------------------------------------------------------------------------
+    (function () {
+        var $panel = $('.js-share');
+        $panel.addClass('active');//после загрузки скриптов, покажем панель (на планшете и выше)
+        $panel.on('click', '.js-share-hide', function () {
+            $panel.addClass('hidden');
+        }).on('click', '.js-share-show', function () {
+            $panel.removeClass('hidden');
+        });
+    })();
+
+    //
     // Кнопка callback - покажем когда проскроллим к футеру
     //---------------------------------------------------------------------------------------
     (function () {
@@ -352,32 +365,21 @@ jQuery(document).ready(function ($) {
 
         if ($.inY($footer, from_bottom)) {//проверка при старте
             $btn.addClass('active');
-            $share.addClass('g-hidden');
+            $share.removeClass('active');
         };
 
         $window.on('scroll', function () {//при скролле
             if ($.inY($footer, from_bottom)) {
                 $btn.addClass('active');
-                $share.addClass('g-hidden');
+                $share.removeClass('active');
             } else {
                 $btn.removeClass('active');
-                $share.removeClass('g-hidden');
+                $share.addClass('active');
             }
         });
     })();
 
-    //
-    // Покажем / спрячем панель с Share кнопками
-    //---------------------------------------------------------------------------------------
-    (function () {
-        var $panel = $('.js-share');
-        $panel.on('click', '.js-share-hide', function () {
-            $panel.addClass('hidden');
-        }).on('click', '.js-share-show', function () {
-            $panel.removeClass('hidden');
-        });
-    })();
-
+    
     //
     // Откроем модальное окно по клику на data-modal
     //---------------------------------------------------------------------------------------
