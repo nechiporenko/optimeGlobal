@@ -2383,7 +2383,7 @@ input[type="radio"] {
   }
 }
 
-.b-pagination a, .b-pagination span {
+.b-pagination .page-numbers {
   display: inline-block;
   vertical-align: middle;
   padding: 3px 7px;
@@ -2391,16 +2391,16 @@ input[type="radio"] {
   font-size: 0.875rem;
 }
 
-.b-pagination a {
+.b-pagination a.page-numbers {
   color: #010101;
   text-decoration: none !important;
 }
 
-.b-pagination a:hover {
+.b-pagination a.page-numbers:hover {
   color: #319fd1;
 }
 
-.b-pagination__current {
+.page-numbers.current {
   color: #fff;
   background: #319fd1;
 }

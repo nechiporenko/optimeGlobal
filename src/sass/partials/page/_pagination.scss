@@ -13,7 +13,7 @@
         text-align:right;
     }
 
-    a, span{
+    .page-numbers{
         display:inline-block;
         vertical-align:middle;
         padding:3px 7px;
@@ -21,7 +21,7 @@
         font-size:rem(14px);
     }
 
-    a{
+    a.page-numbers{
         color:$text-color-alt;
         text-decoration:none !important;
 
@@ -31,7 +31,7 @@
     }
 }
 
-.b-pagination__current{
+.page-numbers.current{
     color:#fff;
     background:$primary;
 }
