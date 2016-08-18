@@ -1307,6 +1307,14 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+.h-submenu__item.current-page-ancestor a {
+  cursor: default;
+}
+
+.h-submenu__item.current-page-ancestor a:after {
+  opacity: 1;
+}
+
 .h-submenu,
 .h-menu .sub-menu {
   list-style-type: none;
@@ -1497,17 +1505,6 @@ input[type="radio"] {
   font-size: 0.75rem;
 }
 
-/*.p-menu__item,
-.p-submenu__item{
-    &.current-page-parent,
-    &.current_page_parent,
-    &.current_page_ancestor{
-        & > .p-submenu,
-        & > .sub-menu{
-            display:block;
-        }
-    }
-}*/
 /*Mobile Menu*/
 .page__overlay {
   position: fixed;
