@@ -36,7 +36,8 @@
 
 
 .m-menu,
-.m-submenu{
+.m-submenu,
+.m-menu .sub-menu{
     @extend .g-clearlist;
 }
 
@@ -44,7 +45,10 @@
     position:relative;
 
     &.current,
-    &.current-menu-item{
+    &.current-menu-item,
+    &.current_page_item,
+    &.current_page_ancestor,
+    &.current-page-ancestor{
         & > a{
             color:$primary;
         }
@@ -80,9 +84,15 @@
     padding-left:20px;
 }
 
-.m-submenu__item.current{
-    & > a{
-        color:$primary;
+.m-submenu__item{
+    &.current,
+    &.current-menu-item,
+    &.current_page_item,
+    &.current_page_ancestor,
+    &.current-page-ancestor{
+        & > a{
+            color:$primary;
+        }
     }
 }
 
@@ -109,7 +119,8 @@
 }
 
 
-.m-submenu{
+.m-submenu,
+.m-menu .sub-menu{
     display:none;
 }
 
