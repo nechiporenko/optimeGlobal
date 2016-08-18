@@ -154,7 +154,8 @@
 .p-menu__item,
 .p-submenu__item{
     &.current-page-parent,
-    &.current_page_parent{
+    &.current_page_parent,
+    &.current_page_ancestor{
         & > .p-submenu,
         & > .sub-menu{
             display:block;

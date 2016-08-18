@@ -1472,11 +1472,14 @@ input[type="radio"] {
 
 .p-menu__item.current-page-parent > .p-submenu,
 .p-menu__item.current-page-parent > .sub-menu, .p-menu__item.current_page_parent > .p-submenu,
-.p-menu__item.current_page_parent > .sub-menu,
+.p-menu__item.current_page_parent > .sub-menu, .p-menu__item.current_page_ancestor > .p-submenu,
+.p-menu__item.current_page_ancestor > .sub-menu,
 .p-submenu__item.current-page-parent > .p-submenu,
 .p-submenu__item.current-page-parent > .sub-menu,
 .p-submenu__item.current_page_parent > .p-submenu,
-.p-submenu__item.current_page_parent > .sub-menu {
+.p-submenu__item.current_page_parent > .sub-menu,
+.p-submenu__item.current_page_ancestor > .p-submenu,
+.p-submenu__item.current_page_ancestor > .sub-menu {
   display: block;
 }
 
