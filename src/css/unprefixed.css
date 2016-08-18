@@ -1276,21 +1276,24 @@ input[type="radio"] {
 .h-menu__item.current > a,
 .h-menu__item.current-menu-item > a,
 .h-menu__item.current_page_item > a,
-.h-menu__item.current_page_ancestor > a {
+.h-menu__item.current_page_ancestor > a,
+.h-menu__item.current-page-ancestor > a {
   cursor: default;
 }
 
 .h-menu__item.current > a:after,
 .h-menu__item.current-menu-item > a:after,
 .h-menu__item.current_page_item > a:after,
-.h-menu__item.current_page_ancestor > a:after {
+.h-menu__item.current_page_ancestor > a:after,
+.h-menu__item.current-page-ancestor > a:after {
   opacity: 1;
 }
 
 .h-menu__item.current > a.has-menu,
 .h-menu__item.current-menu-item > a.has-menu,
 .h-menu__item.current_page_item > a.has-menu,
-.h-menu__item.current_page_ancestor > a.has-menu {
+.h-menu__item.current_page_ancestor > a.has-menu,
+.h-menu__item.current-page-ancestor > a.has-menu {
   cursor: pointer;
 }
 
@@ -1448,23 +1451,32 @@ input[type="radio"] {
 
 .p-submenu__item.current > .p-submenu,
 .p-submenu__item.current > .sub-menu, .p-submenu__item.current_page_item > .p-submenu,
-.p-submenu__item.current_page_item > .sub-menu {
+.p-submenu__item.current_page_item > .sub-menu, .p-submenu__item.current_page_ancestor > .p-submenu,
+.p-submenu__item.current_page_ancestor > .sub-menu {
   display: block;
 }
 
-.p-submenu__item.current > a, .p-submenu__item.current_page_item > a {
+.p-submenu__item.current > a, .p-submenu__item.current_page_item > a, .p-submenu__item.current_page_ancestor > a {
   color: #319fd1;
 }
 
 .p-submenu__item.current .p-submenu__item.current a,
-.p-submenu__item.current .p-submenu__item.current_page_item a, .p-submenu__item.current_page_item .p-submenu__item.current a,
-.p-submenu__item.current_page_item .p-submenu__item.current_page_item a {
+.p-submenu__item.current .p-submenu__item.current_page_item a,
+.p-submenu__item.current .p-submenu__item.current_page_parent a, .p-submenu__item.current_page_item .p-submenu__item.current a,
+.p-submenu__item.current_page_item .p-submenu__item.current_page_item a,
+.p-submenu__item.current_page_item .p-submenu__item.current_page_parent a, .p-submenu__item.current_page_ancestor .p-submenu__item.current a,
+.p-submenu__item.current_page_ancestor .p-submenu__item.current_page_item a,
+.p-submenu__item.current_page_ancestor .p-submenu__item.current_page_parent a {
   cursor: default;
 }
 
 .p-submenu__item.current .p-submenu__item.current a:after,
-.p-submenu__item.current .p-submenu__item.current_page_item a:after, .p-submenu__item.current_page_item .p-submenu__item.current a:after,
-.p-submenu__item.current_page_item .p-submenu__item.current_page_item a:after {
+.p-submenu__item.current .p-submenu__item.current_page_item a:after,
+.p-submenu__item.current .p-submenu__item.current_page_parent a:after, .p-submenu__item.current_page_item .p-submenu__item.current a:after,
+.p-submenu__item.current_page_item .p-submenu__item.current_page_item a:after,
+.p-submenu__item.current_page_item .p-submenu__item.current_page_parent a:after, .p-submenu__item.current_page_ancestor .p-submenu__item.current a:after,
+.p-submenu__item.current_page_ancestor .p-submenu__item.current_page_item a:after,
+.p-submenu__item.current_page_ancestor .p-submenu__item.current_page_parent a:after {
   content: '\e90e';
   font-family: 'icomoon';
   position: absolute;
@@ -1474,19 +1486,17 @@ input[type="radio"] {
   font-size: 0.75rem;
 }
 
-.p-menu__item.current-page-parent > .p-submenu,
-.p-menu__item.current-page-parent > .sub-menu, .p-menu__item.current_page_parent > .p-submenu,
-.p-menu__item.current_page_parent > .sub-menu, .p-menu__item.current_page_ancestor > .p-submenu,
-.p-menu__item.current_page_ancestor > .sub-menu,
-.p-submenu__item.current-page-parent > .p-submenu,
-.p-submenu__item.current-page-parent > .sub-menu,
-.p-submenu__item.current_page_parent > .p-submenu,
-.p-submenu__item.current_page_parent > .sub-menu,
-.p-submenu__item.current_page_ancestor > .p-submenu,
-.p-submenu__item.current_page_ancestor > .sub-menu {
-  display: block;
-}
-
+/*.p-menu__item,
+.p-submenu__item{
+    &.current-page-parent,
+    &.current_page_parent,
+    &.current_page_ancestor{
+        & > .p-submenu,
+        & > .sub-menu{
+            display:block;
+        }
+    }
+}*/
 /*Mobile Menu*/
 .page__overlay {
   position: fixed;

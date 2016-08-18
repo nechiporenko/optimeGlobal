@@ -123,7 +123,8 @@
 
 .p-submenu__item{
     &.current,
-    &.current_page_item{
+    &.current_page_item,
+    &.current_page_ancestor{
         & > .p-submenu,
         & > .sub-menu{
             display:block;
@@ -134,7 +135,8 @@
         }
 
         .p-submenu__item.current,
-        .p-submenu__item.current_page_item{
+        .p-submenu__item.current_page_item,
+        .p-submenu__item.current_page_parent{
             a{
                 cursor:default;
 
@@ -152,7 +154,7 @@
     }    
 }
 
-.p-menu__item,
+/*.p-menu__item,
 .p-submenu__item{
     &.current-page-parent,
     &.current_page_parent,
@@ -162,4 +164,4 @@
             display:block;
         }
     }
-}
+}*/
