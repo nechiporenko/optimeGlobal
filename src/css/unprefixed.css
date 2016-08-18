@@ -1298,14 +1298,6 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-.h-submenu__item.current-page-ancestor a {
-  cursor: default;
-}
-
-.h-submenu__item.current-page-ancestor a:after {
-  opacity: 1;
-}
-
 .h-submenu,
 .h-menu .sub-menu {
   list-style-type: none;
@@ -1338,7 +1330,7 @@ input[type="radio"] {
   text-decoration: underline;
 }
 
-.h-submenu__item.current > a, .h-submenu__item.current-menu-item > a, .h-submenu__item.current_page_item > a {
+.h-submenu__item.current > a, .h-submenu__item.current-menu-item > a, .h-submenu__item.current_page_item > a, .h-submenu__item.current-page-ancestor > a, .h-submenu__item.current_page_ancestor > a {
   text-decoration: underline;
   cursor: default;
 }

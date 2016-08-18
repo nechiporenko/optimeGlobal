@@ -72,18 +72,6 @@
     }
 }
 
-.h-submenu__item.current-page-ancestor{
-    a{
-        cursor:default;
-
-        &:after{
-            opacity:1;
-        }
-    }
-}
-
-
-
 .h-submenu,
 .h-menu .sub-menu{
     list-style-type:none;
@@ -117,7 +105,9 @@
 
     &.current,
     &.current-menu-item,
-    &.current_page_item{
+    &.current_page_item,
+    &.current-page-ancestor,
+    &.current_page_ancestor{
         & > a{
             text-decoration:underline;
             cursor:default;
