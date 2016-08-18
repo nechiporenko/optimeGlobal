@@ -1470,6 +1470,16 @@ input[type="radio"] {
   font-size: 0.75rem;
 }
 
+.p-menu__item.current-page-parent > .p-submenu,
+.p-menu__item.current-page-parent > .sub-menu, .p-menu__item.current_page_parent > .p-submenu,
+.p-menu__item.current_page_parent > .sub-menu,
+.p-submenu__item.current-page-parent > .p-submenu,
+.p-submenu__item.current-page-parent > .sub-menu,
+.p-submenu__item.current_page_parent > .p-submenu,
+.p-submenu__item.current_page_parent > .sub-menu {
+  display: block;
+}
+
 /*Mobile Menu*/
 .page__overlay {
   position: fixed;

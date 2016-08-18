@@ -150,3 +150,14 @@
         }
     }    
 }
+
+.p-menu__item,
+.p-submenu__item{
+    &.current-page-parent,
+    &.current_page_parent{
+        & > .p-submenu,
+        & > .sub-menu{
+            display:block;
+        }
+    }
+}
