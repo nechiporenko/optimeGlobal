@@ -103,17 +103,17 @@ jQuery(document).ready(function ($) {
 
         method.showSubmenu = function (el) {
             el.find('.m-menu__toggle').addClass('active');
-            el.find('.m-submenu').slideDown(400);
+            el.find('ul').slideDown(400);
         };
 
         method.hideSubmenu = function (el) {
             el.find('.m-menu__toggle').removeClass('active');
-            el.find('.m-submenu').slideUp(400);
+            el.find('ul').slideUp(400);
         };
 
         method.hideAllSubmenu = function () {
             $menu.find('.m-menu__toggle').removeClass('active');
-            $menu.find('.m-submenu').slideUp(400);
+            $menu.children('ul').find('ul').slideUp(400);
         };
 
         method.addOverlay = function () {
