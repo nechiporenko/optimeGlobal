@@ -378,7 +378,8 @@ ol ul {
 }
 
 .g-clearlist, .h-lang__list, .p-menu,
-.p-submenu, .m-menu,
+.p-submenu,
+.p-menu .sub-menu, .m-menu,
 .m-submenu, .b-hero__slider, .b-icon__list, .b-list, .b-staff__list, .f-list, .f-social, .b-share__list, .selectric-items ul, .selectric-items li {
   list-style-type: none;
   margin: 0;
@@ -1335,12 +1336,14 @@ input[type="radio"] {
 
 /*Sidebar menu*/
 .p-menu,
-.p-submenu {
+.p-submenu,
+.p-menu .sub-menu {
   line-height: 1;
 }
 
 .p-menu a,
-.p-submenu a {
+.p-submenu a,
+.p-menu .sub-menu a {
   color: #000;
   text-decoration: none !important;
   position: relative;
@@ -1348,11 +1351,14 @@ input[type="radio"] {
 
 .p-menu a:hover, .p-menu a:active,
 .p-submenu a:hover,
-.p-submenu a:active {
+.p-submenu a:active,
+.p-menu .sub-menu a:hover,
+.p-menu .sub-menu a:active {
   color: #319fd1;
 }
 
-.p-submenu {
+.p-submenu,
+.p-menu .sub-menu {
   display: none;
 }
 

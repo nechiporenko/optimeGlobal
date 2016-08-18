@@ -1,7 +1,8 @@
 ﻿@import "../../modules/_base.scss";
 /*Sidebar menu*/
 .p-menu,
-.p-submenu{
+.p-submenu,
+.p-menu .sub-menu{
     @extend .g-clearlist;
     line-height:1;
 
@@ -17,7 +18,8 @@
     }
 }
 
-.p-submenu{
+.p-submenu,
+.p-menu .sub-menu{
     display:none;
 }
 
