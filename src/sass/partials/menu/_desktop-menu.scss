@@ -56,7 +56,8 @@
 
 .h-menu__item.current,
 .h-menu__item.current-menu-item,
-.h-menu__item.current_page_item{
+.h-menu__item.current_page_item,
+.h-menu__item.current_page_ancestor{
     & > a{
         cursor:default;
 

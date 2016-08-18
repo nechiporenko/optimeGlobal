@@ -1285,19 +1285,22 @@ input[type="radio"] {
 
 .h-menu__item.current > a,
 .h-menu__item.current-menu-item > a,
-.h-menu__item.current_page_item > a {
+.h-menu__item.current_page_item > a,
+.h-menu__item.current_page_ancestor > a {
   cursor: default;
 }
 
 .h-menu__item.current > a:after,
 .h-menu__item.current-menu-item > a:after,
-.h-menu__item.current_page_item > a:after {
+.h-menu__item.current_page_item > a:after,
+.h-menu__item.current_page_ancestor > a:after {
   opacity: 1;
 }
 
 .h-menu__item.current > a.has-menu,
 .h-menu__item.current-menu-item > a.has-menu,
-.h-menu__item.current_page_item > a.has-menu {
+.h-menu__item.current_page_item > a.has-menu,
+.h-menu__item.current_page_ancestor > a.has-menu {
   cursor: pointer;
 }
 
@@ -1419,22 +1422,23 @@ input[type="radio"] {
   color: #319fd1;
 }
 
-.p-menu__item.current, .p-menu__item.current_page_item {
+.p-menu__item.current, .p-menu__item.current_page_item, .p-menu__item.current_page_ancestor {
   border-left-color: #319fd1;
   box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .p-menu__item.current > .p-submenu,
 .p-menu__item.current > .sub-menu, .p-menu__item.current_page_item > .p-submenu,
-.p-menu__item.current_page_item > .sub-menu {
+.p-menu__item.current_page_item > .sub-menu, .p-menu__item.current_page_ancestor > .p-submenu,
+.p-menu__item.current_page_ancestor > .sub-menu {
   display: block;
 }
 
-.p-menu__item.current > a, .p-menu__item.current_page_item > a {
+.p-menu__item.current > a, .p-menu__item.current_page_item > a, .p-menu__item.current_page_ancestor > a {
   color: #319fd1;
 }
 
-.p-menu__item.current > a:after, .p-menu__item.current_page_item > a:after {
+.p-menu__item.current > a:after, .p-menu__item.current_page_item > a:after, .p-menu__item.current_page_ancestor > a:after {
   content: '\e901';
   position: absolute;
   font-family: 'icomoon';
@@ -1444,7 +1448,7 @@ input[type="radio"] {
   font-size: 1rem;
 }
 
-.p-menu__item.current > a.has-menu:before, .p-menu__item.current_page_item > a.has-menu:before {
+.p-menu__item.current > a.has-menu:before, .p-menu__item.current_page_item > a.has-menu:before, .p-menu__item.current_page_ancestor > a.has-menu:before {
   content: '';
   position: absolute;
   border-top: 1px solid #d5d5d5;
