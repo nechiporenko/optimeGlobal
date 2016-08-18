@@ -49,7 +49,8 @@
         text-transform:uppercase;
     }
 
-    & > .p-submenu{
+    & > .p-submenu,
+    & > .sub-menu{
         padding-top:4px;
         padding-bottom:11px;
     }
@@ -81,11 +82,13 @@
 
 //раскрывашки
 .p-menu__item{
-    &.current{
+    &.current,
+    &.current_page_item{
         border-left-color:$primary;
         box-shadow:1px 1px 2px 2px rgba(#000, .1);
 
-        & > .p-submenu{
+        & > .p-submenu,
+        & > .sub-menu{
             display:block;
         }
 
@@ -118,8 +121,10 @@
 }
 
 .p-submenu__item{
-    &.current{
-        & > .p-submenu{
+    &.current,
+    &.current_page_item{
+        & > .p-submenu,
+        & > .sub-menu{
             display:block;
         }
 
@@ -127,9 +132,11 @@
             color:$primary;
         }
 
-        .p-submenu__item.current{
+        .p-submenu__item.current,
+        .p-submenu__item.current_page_item{
             a{
                 cursor:default;
+
                 &:after{
                     content:'\e90e';
                     font-family:'icomoon';
@@ -141,7 +148,5 @@
                 }
             }
         }
-    }
-
-    
+    }    
 }

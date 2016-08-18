@@ -55,7 +55,8 @@
 }
 
 .h-menu__item.current,
-.h-menu__item.current-menu-item{
+.h-menu__item.current-menu-item,
+.h-menu__item.current_page_item{
     & > a{
         cursor:default;
 
@@ -71,7 +72,8 @@
 
 
 
-.h-submenu{
+.h-submenu,
+.h-menu .sub-menu{
     list-style-type:none;
     padding:10px;
     margin:0;
@@ -89,7 +91,7 @@
 .h-submenu__item{
     display:block;
 
-    & >a {
+    & > a {
         display:block;
         padding:8px 0;
         color:#fff;
@@ -102,7 +104,8 @@
     }
 
     &.current,
-    &.current-menu-item{
+    &.current-menu-item,
+    &.current_page_item{
         & > a{
             text-decoration:underline;
             cursor:default;
