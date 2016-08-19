@@ -142,11 +142,21 @@
 
         <script>
             (function () {
+                //добавим бэкграунд к первому слайду
                 var elXS = document.getElementsByClassName('b-hero__bg--xs')[0],
                     elXL = document.getElementsByClassName('b-hero__bg--xl')[0];
 
                 elXS.style.backgroundImage = 'url(' + elXS.getAttribute('data-src') + ')';
                 elXL.style.backgroundImage = 'url(' + elXL.getAttribute('data-src') + ')';
+
+                //подготовим первый слайд к анимации текстового контента
+                var el = document.getElementsByClassName('b-hero__content')[0],
+                    className = 'js-slider-animate';
+                if (el.classList) {
+                    el.classList.add(className);
+                } else {
+                    el.className += ' ' + className;
+                }
             })();
         </script>
         <!--/hero slider-->
